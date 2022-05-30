@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="matricula_pu" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Periodo</class>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Calificacion</class>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.NrcHorario</class>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Matricula</class>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.InstitucionEducativa</class>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.MatriculaNrc</class>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.MallaCarrera</class>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Carrera</class>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Materia</class>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Prerequisito</class>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Departamento</class>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc</class>
+    <class>ec.edu.espe.arquitectura.escolastico.general.model.PaisEstructura</class>
+    <class>ec.edu.espe.arquitectura.escolastico.general.model.UbicacionGeografica</class>
+    <class>ec.edu.espe.arquitectura.escolastico.general.model.Error</class>
+    <class>ec.edu.espe.arquitectura.escolastico.general.model.Reglas</class>
+    <class>ec.edu.espe.arquitectura.escolastico.general.model.InstitucionGeneral</class>
+    <class>ec.edu.espe.arquitectura.escolastico.general.model.Pais</class>
+    <class>ec.edu.espe.arquitectura.escolastico.seguridad.model.Modulo</class>
+    <class>ec.edu.espe.arquitectura.escolastico.seguridad.model.Funcionalidad</class>
+    <class>ec.edu.espe.arquitectura.escolastico.seguridad.model.Perfil</class>
+    <class>ec.edu.espe.arquitectura.escolastico.seguridad.model.PerfilFuncionalidad</class>
+    <class>ec.edu.espe.arquitectura.escolastico.seguridad.model.RegistroSesion</class>
+    <class>ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario</class>
+    <class>ec.edu.espe.arquitectura.escolastico.seguridad.model.UsuarioPerfil</class>
+    <class>ec.edu.espe.arquitectura.escolastico.orgfisica.model.Aula</class>
+    <class>ec.edu.espe.arquitectura.escolastico.orgfisica.model.Edificio</class>
+    <class>ec.edu.espe.arquitectura.escolastico.orgfisica.model.EdificioBloque</class>
+    <class>ec.edu.espe.arquitectura.escolastico.orgfisica.model.Sede</class>
+    <class>ec.edu.espe.arquitectura.escolastico.orgfisica.model.TipoAula</class>
+    <class>ec.edu.espe.arquitectura.escolastico.persona.model.DireccionPersona</class>
+    <class>ec.edu.espe.arquitectura.escolastico.persona.model.DocumentoPersona</class>
+    <class>ec.edu.espe.arquitectura.escolastico.persona.model.FamiliarPersona</class>
+    <class>ec.edu.espe.arquitectura.escolastico.persona.model.HistTipoPersona</class>
+    <class>ec.edu.espe.arquitectura.escolastico.persona.model.Persona</class>
+    <class>ec.edu.espe.arquitectura.escolastico.persona.model.TipoDiscapacidad</class>
+    <class>ec.edu.espe.arquitectura.escolastico.persona.model.TipoDocumento</class>
+    <class>ec.edu.espe.arquitectura.escolastico.persona.model.TipoPersona</class>
+    <class>ec.edu.espe.arquitectura.escolastico.orgfisica.model.InstitucionFisica</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/matricula-global"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="12345"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+</persistence>

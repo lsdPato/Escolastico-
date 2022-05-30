@@ -1,1 +1,1 @@
-"# matricula-global" 
+"# escolástico para matrículas" 

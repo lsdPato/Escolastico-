@@ -12,13 +12,13 @@ public class NrcPK implements Serializable {
     private Integer codNrc;
 
     @Column(name = "cod_periodo", nullable = false)
-    private int codPeriodo;
+    private Integer codPeriodo;
 
     @Column(name = "cod_departamento", nullable = false)
-    private int codDepartamento;
+    private Integer codDepartamento;
 
     @Column(name = "cod_materia", nullable = false)
-    private int codMateria;
+    private Integer codMateria;
 
     public NrcPK() {
     }
@@ -31,27 +31,27 @@ public class NrcPK implements Serializable {
         this.codNrc = codNrc;
     }
 
-    public int getCodPeriodo() {
+    public Integer getCodPeriodo() {
         return codPeriodo;
     }
 
-    public void setCodPeriodo(int codPeriodo) {
+    public void setCodPeriodo(Integer codPeriodo) {
         this.codPeriodo = codPeriodo;
     }
 
-    public int getCodDepartamento() {
+    public Integer getCodDepartamento() {
         return codDepartamento;
     }
 
-    public void setCodDepartamento(int codDepartamento) {
+    public void setCodDepartamento(Integer codDepartamento) {
         this.codDepartamento = codDepartamento;
     }
 
-    public int getCodMateria() {
+    public Integer getCodMateria() {
         return codMateria;
     }
 
-    public void setCodMateria(int codMateria) {
+    public void setCodMateria(Integer codMateria) {
         this.codMateria = codMateria;
     }
 

@@ -10,7 +10,7 @@ public class MatriculaPK implements Serializable {
     @Column(name = "cod_matricula", nullable = false, length = 10)
     private String codMatricula;
     @Column(name = "cod_persona", nullable = false)
-    private int codPersona;
+    private Integer codPersona;
 
     public MatriculaPK() {
     }
@@ -28,11 +28,11 @@ public class MatriculaPK implements Serializable {
         this.codMatricula = codMatricula;
     }
 
-    public int getCodPersona() {
+    public Integer getCodPersona() {
         return codPersona;
     }
 
-    public void setCodPersona(int codPersona) {
+    public void setCodPersona(Integer codPersona) {
         this.codPersona = codPersona;
     }
 

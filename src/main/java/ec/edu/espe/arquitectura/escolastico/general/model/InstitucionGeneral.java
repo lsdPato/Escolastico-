@@ -28,7 +28,7 @@ public class InstitucionGeneral implements Serializable {
     @Column(name = "url_sistema", nullable = false, length = 128)
     private String urlSistema;
     @Column(name = "version", nullable = false)
-    private int version;
+    private Integer version;
     @JoinColumn(name = "cod_ubicacion_geo_int", referencedColumnName = "cod_ubicacion_geo_int", insertable = false, updatable = false)
     @ManyToOne
     private UbicacionGeografica ubicacionGeoInt;
@@ -104,11 +104,11 @@ public class InstitucionGeneral implements Serializable {
         this.urlSistema = urlSistema;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 

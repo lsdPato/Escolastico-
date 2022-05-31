@@ -11,12 +11,12 @@ public class PaisEstructuraPK implements Serializable {
     @Column(name = "cod_pais", nullable = false, length = 2)
     private String codPais;
     @Column(name = "nivel", nullable = false)
-    private short nivel;
+    private Integer nivel;
 
     public PaisEstructuraPK() {
     }
 
-    public PaisEstructuraPK(String codPais, short nivel) {
+    public PaisEstructuraPK(String codPais, Integer nivel) {
         this.codPais = codPais;
         this.nivel = nivel;
     }
@@ -29,11 +29,11 @@ public class PaisEstructuraPK implements Serializable {
         this.codPais = codPais;
     }
 
-    public short getNivel() {
+    public Integer getNivel() {
         return nivel;
     }
 
-    public void setNivel(short nivel) {
+    public void setNivel(Integer nivel) {
         this.nivel = nivel;
     }
 

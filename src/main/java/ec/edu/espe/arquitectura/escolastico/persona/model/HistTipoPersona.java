@@ -30,7 +30,7 @@ public class HistTipoPersona implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
-    private int version;
+    private Integer version;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Persona persona;
@@ -41,7 +41,7 @@ public class HistTipoPersona implements Serializable {
     public HistTipoPersona() {
     }
 
-    public HistTipoPersona(int codPersona, String codTipoPersona) {
+    public HistTipoPersona(Integer codPersona, String codTipoPersona) {
         this.pk = new HistTipoPersonaPK(codPersona, codTipoPersona);
     }
 
@@ -109,11 +109,11 @@ public class HistTipoPersona implements Serializable {
         this.audIp = audIp;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 

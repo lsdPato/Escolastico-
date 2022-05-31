@@ -21,7 +21,7 @@ public class PerfilFuncionalidad implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
-    private int version;
+    private Integer version;
     @JoinColumn(name = "cod_funcionalidad", referencedColumnName = "cod_funcionalidad", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Funcionalidad funcionalidad;
@@ -32,7 +32,7 @@ public class PerfilFuncionalidad implements Serializable {
     public PerfilFuncionalidad() {
     }
 
-    public PerfilFuncionalidad(String codPerfil, int codFuncionalidad) {
+    public PerfilFuncionalidad(String codPerfil, Integer codFuncionalidad) {
         this.pk = new PerfilFuncionalidadPK(codPerfil, codFuncionalidad);
     }
 
@@ -68,11 +68,11 @@ public class PerfilFuncionalidad implements Serializable {
         this.audIp = audIp;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 

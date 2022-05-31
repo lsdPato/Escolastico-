@@ -6,7 +6,6 @@
     <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Calificacion</class>
     <class>ec.edu.espe.arquitectura.escolastico.educacion.model.NrcHorario</class>
     <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Matricula</class>
-    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.InstitucionEducativa</class>
     <class>ec.edu.espe.arquitectura.escolastico.educacion.model.MatriculaNrc</class>
     <class>ec.edu.espe.arquitectura.escolastico.educacion.model.MallaCarrera</class>
     <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Carrera</class>

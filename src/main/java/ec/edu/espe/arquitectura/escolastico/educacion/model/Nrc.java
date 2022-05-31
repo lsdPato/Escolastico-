@@ -38,10 +38,7 @@ public class Nrc implements Serializable {
     private String nombre;
     @Column(name = "cod_persona", nullable = false, insertable = false, updatable = false)
     private Integer codPersona;
-    @Column(name = "cod_periodo", nullable = false, insertable = false, updatable = false)
-    private Integer codPeriodo;
-    @Column(name = "cod_materia", nullable = false, insertable = false, updatable = false)
-    private Integer codMateria;
+
     @JoinColumns({@JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false), @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private Materia materia;
@@ -99,13 +96,6 @@ public class Nrc implements Serializable {
         this.codPersona = codPersona;
     }
 
-    public void setCodPeriodo(Integer codPeriodo) {
-        this.codPeriodo = codPeriodo;
-    }
-
-    public void setCodMateria(Integer codMateria) {
-        this.codMateria = codMateria;
-    }
 
     public Materia getMateria() {
         return materia;
@@ -153,14 +143,6 @@ public class Nrc implements Serializable {
 
     public void setPersona(ec.edu.espe.arquitectura.escolastico.persona.model.Persona persona) {
         Persona = persona;
-    }
-
-    public int getCodPeriodo() {
-        return codPeriodo;
-    }
-
-    public void setCodPeriodo(int codPeriodo) {
-        this.codPeriodo = codPeriodo;
     }
 
 

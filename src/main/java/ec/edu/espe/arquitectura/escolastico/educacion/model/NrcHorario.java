@@ -15,15 +15,12 @@ public class NrcHorario implements Serializable {
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
     private NrcHorarioPK pk;
-    @Column(name = "cod_aula", nullable = false, insertable = false, updatable = false)
-    private int codAula;
+
     @Column(name = "hora_inicio", nullable = false)
     @Temporal(TemporalType.TIME)
     private Date horaInicio;
-    @Column(name = "dia_semana", nullable = false, insertable = false, updatable = false)
-    private String diaSemana;
-    @Column(name = "cod_materia", nullable = false, insertable = false, updatable = false)
-    private Integer codMateria;
+
+
     @Column(name = "hora_fin", nullable = false)
     @Temporal(TemporalType.TIME)
     private Date horaFin;
@@ -85,29 +82,6 @@ public class NrcHorario implements Serializable {
         this.aula = aula;
     }
 
-    public int getCodAula() {
-        return codAula;
-    }
-
-    public void setCodAula(int codAula) {
-        this.codAula = codAula;
-    }
-
-    public String getDiaSemana() {
-        return diaSemana;
-    }
-
-    public void setDiaSemana(String diaSemana) {
-        this.diaSemana = diaSemana;
-    }
-
-    public Integer getCodMateria() {
-        return codMateria;
-    }
-
-    public void setCodMateria(int codMateria) {
-        this.codMateria = codMateria;
-    }
 
     @Override
     public int hashCode() {

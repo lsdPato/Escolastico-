@@ -7,12 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
-    List<Carrera> findByTotalSemestres(int totalSemestres);
+    Carrera findByNombreOrderByNombre(String nombre);
 
-    Carrera findByNombre(String nombre);
+    List<Carrera> findByModalidadOrderByModalidad(String modalidad);
 
-    List<Carrera> findByModalidad(String modalidad);
-
-    List<Carrera> findByNombreAndModalidad(String nombre, String modalidad);
 
 }

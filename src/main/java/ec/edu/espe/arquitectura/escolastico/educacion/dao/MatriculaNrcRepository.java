@@ -10,4 +10,6 @@ import java.util.List;
 public interface MatriculaNrcRepository extends JpaRepository<MatriculaNrc, MatriculaNrcPK> {
 
     List<MatriculaNrc> findByEstado(String estado);
+    List<MatriculaNrc> findByPkCodPersonaAndEstado(Integer codPersona, String estado);
+
 }

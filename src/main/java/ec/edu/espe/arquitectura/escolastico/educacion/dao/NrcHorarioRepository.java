@@ -14,7 +14,7 @@ public interface NrcHorarioRepository extends JpaRepository<NrcHorario, NrcHorar
 
     List<NrcHorario> findByHoraFin(Date horaFin);
 
-    List<NrcHorario> findByCodAulaAndDiaSemana(Integer codAula, String diaSemana);
+    List<NrcHorario> findByPkCodAulaAndPkDiaSemana(Integer codAula, String diaSemana);
 
-    List<NrcHorario> findByCodMateria(Integer codMateria);
+    List<NrcHorario> findByPkCodMateria(Integer codMateria);
 }

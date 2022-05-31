@@ -54,7 +54,7 @@ public class Calificacion implements Serializable {
         this.pk = calificacionPK;
     }
 
-    public Calificacion(String codMatricula, short codNrc) {
+    public Calificacion(String codMatricula, Integer codNrc) {
         this.pk = new CalificacionPK(codMatricula, codNrc);
     }
 

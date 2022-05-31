@@ -26,7 +26,7 @@ public class Periodo implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaFin;
     @Column(name = "parciales", nullable = false)
-    private short parciales;
+    private Integer parciales;
 
     public Periodo() {
     }
@@ -75,11 +75,11 @@ public class Periodo implements Serializable {
         this.fechaFin = fechaFin;
     }
 
-    public short getParciales() {
+    public Integer getParciales() {
         return parciales;
     }
 
-    public void setParciales(short parciales) {
+    public void setParciales(Integer parciales) {
         this.parciales = parciales;
     }
 

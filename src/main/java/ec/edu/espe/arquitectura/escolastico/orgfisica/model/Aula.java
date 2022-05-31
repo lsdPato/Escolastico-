@@ -20,9 +20,9 @@ public class Aula implements Serializable {
     @Column(name = "cod_alterno", nullable = false, length = 10)
     private String codAlterno;
     @Column(name = "capacidad", nullable = false)
-    private short capacidad;
+    private Integer capacidad;
     @Column(name = "piso", nullable = false)
-    private short piso;
+    private Integer piso;
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
     @Column(name = "aud_fecha", nullable = false)
@@ -67,19 +67,19 @@ public class Aula implements Serializable {
         this.codAlterno = codAlterno;
     }
 
-    public short getCapacidad() {
+    public Integer getCapacidad() {
         return capacidad;
     }
 
-    public void setCapacidad(short capacidad) {
+    public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
     }
 
-    public short getPiso() {
+    public Integer getPiso() {
         return piso;
     }
 
-    public void setPiso(short piso) {
+    public void setPiso(Integer piso) {
         this.piso = piso;
     }
 

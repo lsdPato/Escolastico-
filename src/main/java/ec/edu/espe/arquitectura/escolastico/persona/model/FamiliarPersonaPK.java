@@ -11,12 +11,12 @@ public class FamiliarPersonaPK implements Serializable {
     @Column(name = "cod_persona", nullable = false)
     private int codPersona;
     @Column(name = "sec_familiar_persona", nullable = false)
-    private short secFamiliarPersona;
+    private Integer secFamiliarPersona;
 
     public FamiliarPersonaPK() {
     }
 
-    public FamiliarPersonaPK(int codPersona, short secFamiliarPersona) {
+    public FamiliarPersonaPK(int codPersona, Integer secFamiliarPersona) {
         this.codPersona = codPersona;
         this.secFamiliarPersona = secFamiliarPersona;
     }
@@ -29,11 +29,11 @@ public class FamiliarPersonaPK implements Serializable {
         this.codPersona = codPersona;
     }
 
-    public short getSecFamiliarPersona() {
+    public Integer getSecFamiliarPersona() {
         return secFamiliarPersona;
     }
 
-    public void setSecFamiliarPersona(short secFamiliarPersona) {
+    public void setSecFamiliarPersona(Integer secFamiliarPersona) {
         this.secFamiliarPersona = secFamiliarPersona;
     }
 

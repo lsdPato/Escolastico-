@@ -48,7 +48,7 @@ public class DireccionPersona implements Serializable {
     public DireccionPersona() {
     }
 
-    public DireccionPersona(int codPersona, short secDireccion) {
+    public DireccionPersona(int codPersona, Integer secDireccion) {
         this.pk = new DireccionPersonaPK(codPersona, secDireccion);
     }
 

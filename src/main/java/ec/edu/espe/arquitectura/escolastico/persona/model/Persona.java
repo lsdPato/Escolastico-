@@ -59,7 +59,7 @@ public class Persona implements Serializable {
     @Column(name = "discapacidad", nullable = false, length = 1)
     private String discapacidad;
     @Column(name = "porcentaje_discapacidad")
-    private Short porcentajeDiscapacidad;
+    private Integer porcentajeDiscapacidad;
     @Column(name = "carnet_conadis", length = 10)
     private String carnetConadis;
     @Column(name = "aud_usuario", nullable = false, length = 30)
@@ -264,11 +264,11 @@ public class Persona implements Serializable {
         this.discapacidad = discapacidad;
     }
 
-    public Short getPorcentajeDiscapacidad() {
+    public Integer getPorcentajeDiscapacidad() {
         return porcentajeDiscapacidad;
     }
 
-    public void setPorcentajeDiscapacidad(Short porcentajeDiscapacidad) {
+    public void setPorcentajeDiscapacidad(Integer porcentajeDiscapacidad) {
         this.porcentajeDiscapacidad = porcentajeDiscapacidad;
     }
 

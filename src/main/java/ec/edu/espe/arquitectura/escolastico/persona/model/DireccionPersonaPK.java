@@ -11,12 +11,12 @@ public class DireccionPersonaPK implements Serializable {
     @Column(name = "cod_persona", nullable = false)
     private int codPersona;
     @Column(name = "sec_direccion", nullable = false)
-    private short secDireccion;
+    private Integer secDireccion;
 
     public DireccionPersonaPK() {
     }
 
-    public DireccionPersonaPK(int codPersona, short secDireccion) {
+    public DireccionPersonaPK(int codPersona, Integer secDireccion) {
         this.codPersona = codPersona;
         this.secDireccion = secDireccion;
     }
@@ -29,11 +29,11 @@ public class DireccionPersonaPK implements Serializable {
         this.codPersona = codPersona;
     }
 
-    public short getSecDireccion() {
+    public Integer getSecDireccion() {
         return secDireccion;
     }
 
-    public void setSecDireccion(short secDireccion) {
+    public void setSecDireccion(Integer secDireccion) {
         this.secDireccion = secDireccion;
     }
 

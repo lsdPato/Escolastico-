@@ -17,7 +17,7 @@ public class MatriculaNrc implements Serializable {
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
     @Column(name = "numero", nullable = false)
-    private short numero;
+    private Integer numero;
     @Column(name = "costo", nullable = false, precision = 7, scale = 2)
     private BigDecimal costo;
     @JoinColumns({
@@ -58,11 +58,11 @@ public class MatriculaNrc implements Serializable {
         this.estado = estado;
     }
 
-    public short getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(short numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 

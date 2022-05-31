@@ -13,7 +13,7 @@ public class InstitucionFisica implements Serializable {
     private static final long serialVersionUID = 13456L;
     @Id
     @Column(name = "cod_institucion", nullable = false)
-    private Short codInstitucion;
+    private Integer codInstitucion;
     @Column(name = "ruc", nullable = false, length = 13)
     private String ruc;
     @Column(name = "razon_social", nullable = false, length = 250)
@@ -37,15 +37,15 @@ public class InstitucionFisica implements Serializable {
     public InstitucionFisica() {
     }
 
-    public InstitucionFisica(Short codInstitucion) {
+    public InstitucionFisica(Integer codInstitucion) {
         this.codInstitucion = codInstitucion;
     }
 
-    public Short getCodInstitucion() {
+    public Integer getCodInstitucion() {
         return codInstitucion;
     }
 
-    public void setCodInstitucion(Short codInstitucion) {
+    public void setCodInstitucion(Integer codInstitucion) {
         this.codInstitucion = codInstitucion;
     }
 

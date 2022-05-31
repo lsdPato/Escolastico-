@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class NrcPK implements Serializable {
 
     @Column(name = "cod_nrc", nullable = false)
-    private short codNrc;
+    private Integer codNrc;
 
     @Column(name = "cod_periodo", nullable = false)
     private int codPeriodo;
@@ -23,11 +23,11 @@ public class NrcPK implements Serializable {
     public NrcPK() {
     }
 
-    public short getCodNrc() {
+    public Integer getCodNrc() {
         return codNrc;
     }
 
-    public void setCodNrc(short codNrc) {
+    public void setCodNrc(Integer codNrc) {
         this.codNrc = codNrc;
     }
 

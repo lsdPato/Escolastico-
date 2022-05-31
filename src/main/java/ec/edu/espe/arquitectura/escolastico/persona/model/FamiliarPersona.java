@@ -41,7 +41,7 @@ public class FamiliarPersona implements Serializable {
     public FamiliarPersona() {
     }
 
-    public FamiliarPersona(int codPersona, short secFamiliarPersona) {
+    public FamiliarPersona(int codPersona, Integer secFamiliarPersona) {
         this.pk = new FamiliarPersonaPK(codPersona, secFamiliarPersona);
     }
 

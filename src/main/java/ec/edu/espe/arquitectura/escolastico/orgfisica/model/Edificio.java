@@ -29,7 +29,7 @@ public class Edificio implements Serializable {
     @Column(name = "posee_aulas", nullable = false, length = 1)
     private String poseeAulas;
     @Column(name = "pisos", nullable = false)
-    private short pisos;
+    private Integer pisos;
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
     @Column(name = "aud_fecha", nullable = false)
@@ -118,11 +118,11 @@ public class Edificio implements Serializable {
         this.poseeAulas = poseeAulas;
     }
 
-    public short getPisos() {
+    public Integer getPisos() {
         return pisos;
     }
 
-    public void setPisos(short pisos) {
+    public void setPisos(Integer pisos) {
         this.pisos = pisos;
     }
 

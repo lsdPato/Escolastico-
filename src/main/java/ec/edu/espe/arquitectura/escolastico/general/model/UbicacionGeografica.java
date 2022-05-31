@@ -18,7 +18,7 @@ public class UbicacionGeografica implements Serializable {
     @Column(name = "cod_pais", nullable = false)
     private String codPais;
     @Column(name = "cod_nivel", nullable = false)
-    private Short nivel;
+    private Integer nivel;
     @Column(name = "cod_ubicacion_geografica", nullable = false)
     private String codUbicacionGeografica;
     @Column(name = "cod_ubicacion_geo_padre", nullable = false, length = 20)
@@ -79,11 +79,11 @@ public class UbicacionGeografica implements Serializable {
         this.codPais = codPais;
     }
 
-    public Short getNivel() {
+    public Integer getNivel() {
         return nivel;
     }
 
-    public void setNivel(Short nivel) {
+    public void setNivel(Integer nivel) {
         this.nivel = nivel;
     }
 

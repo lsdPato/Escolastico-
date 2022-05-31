@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class MatriculaNrcPK implements Serializable {
 
     @Column(name = "cod_nrc", nullable = false)
-    private short codNrc;
+    private Integer codNrc;
     @Column(name = "cod_periodo", nullable = false)
     private int codPeriodo;
     @Column(name = "cod_departamento", nullable = false)
@@ -23,11 +23,11 @@ public class MatriculaNrcPK implements Serializable {
     public MatriculaNrcPK() {
     }
 
-    public short getCodNrc() {
+    public Integer getCodNrc() {
         return codNrc;
     }
 
-    public void setCodNrc(short codNrc) {
+    public void setCodNrc(Integer codNrc) {
         this.codNrc = codNrc;
     }
 

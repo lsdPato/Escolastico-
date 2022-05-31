@@ -10,7 +10,7 @@ public class NrcHorarioPK implements Serializable {
 
     
     @Column(name = "cod_nrc", nullable = false)
-    private short codNrc;
+    private Integer codNrc;
     
     @Column(name = "cod_periodo", nullable = false)
     private int codPeriodo;
@@ -30,11 +30,11 @@ public class NrcHorarioPK implements Serializable {
     public NrcHorarioPK() {
     }
 
-    public short getCodNrc() {
+    public Integer getCodNrc() {
         return codNrc;
     }
 
-    public void setCodNrc(short codNrc) {
+    public void setCodNrc(Integer codNrc) {
         this.codNrc = codNrc;
     }
 

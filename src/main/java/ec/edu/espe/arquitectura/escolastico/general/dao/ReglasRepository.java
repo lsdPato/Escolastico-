@@ -8,7 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ReglasRepository extends JpaRepository<Reglas, String> {
-    List<Reglas> findByTipo(String tipo);
-
     List<Reglas> findByClasificacion(String clasificacion);
 }

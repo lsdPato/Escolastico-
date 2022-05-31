@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface InstitucionGeneralRepository extends JpaRepository<InstitucionGeneral, String> {
-    List<InstitucionGeneral> findByCodUbicacionGeoInt(Integer codUbicacionGeoInt);
+    List<InstitucionGeneral> findByNombreComercialLike(String nombrePattern);
 }

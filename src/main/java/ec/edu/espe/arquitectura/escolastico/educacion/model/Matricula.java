@@ -24,8 +24,7 @@ public class Matricula implements Serializable {
     private Date fecha;
     @Column(name = "costo", nullable = false)
     private double costo;
-    @Column(name = "cod_persona", nullable = false, insertable = false, updatable = false)
-    private Integer codPersona;
+
     @Column(name = "cod_periodo", nullable = false, insertable = false, updatable = false)
     private Integer codPeriodo;
     @Column(name = "cod_carrera", nullable = false, insertable = false, updatable = false)
@@ -101,13 +100,6 @@ public class Matricula implements Serializable {
         this.matriculaNrc = matriculaNrcList;
     }
 
-    public Integer getCodPersona() {
-        return codPersona;
-    }
-
-    public void setCodPersona(int codPersona) {
-        this.codPersona = codPersona;
-    }
 
     public Integer getCodPeriodo() {
         return codPeriodo;

@@ -10,11 +10,10 @@ import java.util.List;
 
 public interface NrcHorarioRepository extends JpaRepository<NrcHorario, NrcHorarioPK> {
 
-    List<NrcHorario> findByHoraInicio(Date horaInicio);
-
-    List<NrcHorario> findByHoraFin(Date horaFin);
 
     List<NrcHorario> findByPkCodAulaAndPkDiaSemana(Integer codAula, String diaSemana);
 
     List<NrcHorario> findByPkCodMateria(Integer codMateria);
+
+    List<NrcHorario> findByPkCodMateriaAndPkCodPeriodo(Integer codMateria, Integer codPeriodo);
 }

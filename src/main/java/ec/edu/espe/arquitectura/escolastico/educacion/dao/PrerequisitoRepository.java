@@ -7,12 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PrerequisitoRepository extends JpaRepository<Prerequisito, Integer> {
-    List<Prerequisito> findByCodPrerequisito(Integer codPrerequisito);
 
     List<Prerequisito> findByCodMateria(Integer codMateria);
 
-    List<Prerequisito> findByTipo(String tipo);
+    List<Prerequisito> findByTipoAndCodMateria(String tipo, Integer codMateria);
 
-    List<Prerequisito> findByCodMateriaAndTipo(Integer codMateria, String tipo);
 
 }

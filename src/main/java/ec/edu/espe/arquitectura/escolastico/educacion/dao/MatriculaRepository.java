@@ -9,11 +9,13 @@ import java.util.Date;
 import java.util.List;
 
 public interface MatriculaRepository extends JpaRepository<Matricula, MatriculaPK> {
-    List<Matricula> findByTipo(String tipo);
+    List<Matricula> findByTipoOrderByTipo(String tipo);
 
     List<Matricula> findByFechaBetween(Date fechaInicial, Date fechaFinal);
 
-    List<Matricula> findByCodPersona(Integer codpersona);
+    List<Matricula> findByPkCodPersona(Integer codPersona);
 
     List<Matricula> findByCodPeriodoAndCodCarrera(Integer codPeriodo, Integer CodCarrera);
+
+    List<Matricula> findByCodPeriodoAndPkCodPersona(Integer codPeriodo, Integer codPersona);
 }

@@ -9,14 +9,9 @@ import java.util.List;
 
 public interface NrcRepository extends JpaRepository<Nrc, NrcPK> {
 
-    List<Nrc> findByNombreLike(String nombrePattern);
-
-    List<Nrc> findByNombreLikeAndCupoDisponibleIsGreaterThan(String nombrePattern, short cupo);
-
-    List<Nrc> findByCodPersona(Integer codDocente);
+    List<Nrc> findByPkCodMateriaLikeAndCupoDisponibleIsGreaterThan(Integer materia, Integer cupo);
 
     List<Nrc> findByPkCodPeriodoAndPkCodMateria(Integer codPeriodo, Integer codMateria);
 
-    List<Nrc> findByNombreLikeAndCupoRegistradoGreaterThan(String nombrePattern, short cupoRegistradoMinimo);
 
 }

@@ -19,7 +19,7 @@ public class Carrera implements Serializable {
     @Column(name = "nombre", nullable = false, length = 255)
     private String nombre;
     @Column(name = "total_semestres", nullable = false)
-    private int totalSemestres;
+    private Integer totalSemestres;
     @Column(name = "grado", nullable = false, length = 25)
     private String grado;
     @Column(name = "perfil_profesional", nullable = false, length = 500)
@@ -67,11 +67,11 @@ public class Carrera implements Serializable {
         this.nombre = nombre;
     }
 
-    public int getTotalSemestres() {
+    public Integer getTotalSemestres() {
         return totalSemestres;
     }
 
-    public void setTotalSemestres(int totalSemestres) {
+    public void setTotalSemestres(Integer totalSemestres) {
         this.totalSemestres = totalSemestres;
     }
 

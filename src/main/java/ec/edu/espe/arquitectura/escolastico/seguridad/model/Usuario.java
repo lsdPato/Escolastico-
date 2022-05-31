@@ -47,7 +47,7 @@ public class Usuario implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
-    private int version;
+    private Integer version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private List<UsuarioPerfil> usuarioPerfilList;
 
@@ -170,11 +170,11 @@ public class Usuario implements Serializable {
         this.audIp = audIp;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 

@@ -9,23 +9,23 @@ import java.io.Serializable;
 public class DireccionPersonaPK implements Serializable {
 
     @Column(name = "cod_persona", nullable = false)
-    private int codPersona;
+    private Integer codPersona;
     @Column(name = "sec_direccion", nullable = false)
     private Integer secDireccion;
 
     public DireccionPersonaPK() {
     }
 
-    public DireccionPersonaPK(int codPersona, Integer secDireccion) {
+    public DireccionPersonaPK(Integer codPersona, Integer secDireccion) {
         this.codPersona = codPersona;
         this.secDireccion = secDireccion;
     }
 
-    public int getCodPersona() {
+    public Integer getCodPersona() {
         return codPersona;
     }
 
-    public void setCodPersona(int codPersona) {
+    public void setCodPersona(Integer codPersona) {
         this.codPersona = codPersona;
     }
 

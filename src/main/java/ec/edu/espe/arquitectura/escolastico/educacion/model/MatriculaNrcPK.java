@@ -10,15 +10,15 @@ public class MatriculaNrcPK implements Serializable {
     @Column(name = "cod_nrc", nullable = false)
     private Integer codNrc;
     @Column(name = "cod_periodo", nullable = false)
-    private int codPeriodo;
+    private Integer codPeriodo;
     @Column(name = "cod_departamento", nullable = false)
-    private int codDepartamento;
+    private Integer codDepartamento;
     @Column(name = "cod_materia", nullable = false)
-    private int codMateria;
+    private Integer codMateria;
     @Column(name = "cod_matricula", nullable = false, length = 10)
     private String codMatricula;
     @Column(name = "cod_persona", nullable = false)
-    private int codPersona;
+    private Integer codPersona;
 
     public MatriculaNrcPK() {
     }
@@ -31,27 +31,27 @@ public class MatriculaNrcPK implements Serializable {
         this.codNrc = codNrc;
     }
 
-    public int getCodPeriodo() {
+    public Integer getCodPeriodo() {
         return codPeriodo;
     }
 
-    public void setCodPeriodo(int codPeriodo) {
+    public void setCodPeriodo(Integer codPeriodo) {
         this.codPeriodo = codPeriodo;
     }
 
-    public int getCodDepartamento() {
+    public Integer getCodDepartamento() {
         return codDepartamento;
     }
 
-    public void setCodDepartamento(int codDepartamento) {
+    public void setCodDepartamento(Integer codDepartamento) {
         this.codDepartamento = codDepartamento;
     }
 
-    public int getCodMateria() {
+    public Integer getCodMateria() {
         return codMateria;
     }
 
-    public void setCodMateria(int codMateria) {
+    public void setCodMateria(Integer codMateria) {
         this.codMateria = codMateria;
     }
 
@@ -63,11 +63,11 @@ public class MatriculaNrcPK implements Serializable {
         this.codMatricula = codMatricula;
     }
 
-    public int getCodPersona() {
+    public Integer getCodPersona() {
         return codPersona;
     }
 
-    public void setCodPersona(int codPersona) {
+    public void setCodPersona(Integer codPersona) {
         this.codPersona = codPersona;
     }
 

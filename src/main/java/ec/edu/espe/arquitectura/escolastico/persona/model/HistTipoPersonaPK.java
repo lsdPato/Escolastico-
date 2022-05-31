@@ -9,23 +9,23 @@ import java.io.Serializable;
 public class HistTipoPersonaPK implements Serializable {
 
     @Column(name = "cod_persona", nullable = false)
-    private int codPersona;
+    private Integer codPersona;
     @Column(name = "cod_tipo_persona", nullable = false, length = 3)
     private String codTipoPersona;
 
     public HistTipoPersonaPK() {
     }
 
-    public HistTipoPersonaPK(int codPersona, String codTipoPersona) {
+    public HistTipoPersonaPK(Integer codPersona, String codTipoPersona) {
         this.codPersona = codPersona;
         this.codTipoPersona = codTipoPersona;
     }
 
-    public int getCodPersona() {
+    public Integer getCodPersona() {
         return codPersona;
     }
 
-    public void setCodPersona(int codPersona) {
+    public void setCodPersona(Integer codPersona) {
         this.codPersona = codPersona;
     }
 

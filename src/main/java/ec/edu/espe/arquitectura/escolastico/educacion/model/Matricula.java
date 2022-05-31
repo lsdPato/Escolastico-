@@ -23,7 +23,7 @@ public class Matricula implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fecha;
     @Column(name = "costo", nullable = false)
-    private double costo;
+    private Double costo;
 
     @Column(name = "cod_periodo", nullable = false, insertable = false, updatable = false)
     private Integer codPeriodo;
@@ -76,11 +76,11 @@ public class Matricula implements Serializable {
         this.fecha = fecha;
     }
 
-    public double getCosto() {
+    public Double getCosto() {
         return costo;
     }
 
-    public void setCosto(double costo) {
+    public void setCosto(Double costo) {
         this.costo = costo;
     }
 

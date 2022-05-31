@@ -96,7 +96,6 @@ public class Nrc implements Serializable {
         this.codPersona = codPersona;
     }
 
-
     public Materia getMateria() {
         return materia;
     }
@@ -129,7 +128,7 @@ public class Nrc implements Serializable {
         this.matriculaNrc = matriculaNrcList;
     }
 
-    public int getCodPersona() {
+    public Integer getCodPersona() {
         return codPersona;
     }
 

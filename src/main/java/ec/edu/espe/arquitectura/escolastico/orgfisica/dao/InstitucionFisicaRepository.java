@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface InstitucionFisicaRepository extends JpaRepository<InstitucionFisica, Short> {
-    List<InstitucionFisica> findByNombreComercial(String nombreComercial);
+public interface InstitucionFisicaRepository extends JpaRepository<InstitucionFisica,Integer> {
+    List<InstitucionFisica> findByNombreComercialLikeOrderByNombreComercial(String nombreComercial);
 }

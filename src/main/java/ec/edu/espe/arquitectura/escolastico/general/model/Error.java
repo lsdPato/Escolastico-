@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 public class Error implements Serializable {
 
-    private static final long serialVersionUID = 64751L;
+    private static final long serialVersionUID = 87751L;
     @Id
     @Column(name = "cod_error", nullable = false, length = 5)
     private String codError;

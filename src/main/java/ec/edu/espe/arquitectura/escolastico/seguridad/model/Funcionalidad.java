@@ -39,7 +39,7 @@ public class Funcionalidad implements Serializable {
     @ManyToOne(optional = false)
     private Modulo modulo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "funcionalidad")
-    private List<PerfilFuncionalidad> perfilFuncionalidadList;
+    private List<PerfilFuncionalidad> perfilFuncionalidades;
 
     public Funcionalidad() {
     }
@@ -136,12 +136,12 @@ public class Funcionalidad implements Serializable {
         this.modulo = modulo;
     }
 
-    public List<PerfilFuncionalidad> getPerfilFuncionalidadList() {
-        return perfilFuncionalidadList;
+    public List<PerfilFuncionalidad> getPerfilFuncionalidades() {
+        return perfilFuncionalidades;
     }
 
-    public void setPerfilFuncionalidadList(List<PerfilFuncionalidad> perfilFuncionalidadList) {
-        this.perfilFuncionalidadList = perfilFuncionalidadList;
+    public void setPerfilFuncionalidades(List<PerfilFuncionalidad> perfilFuncionalidadList) {
+        this.perfilFuncionalidades = perfilFuncionalidadList;
     }
 
     @Override

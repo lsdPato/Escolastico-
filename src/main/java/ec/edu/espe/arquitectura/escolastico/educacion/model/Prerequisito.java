@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public class Prerequisito implements Serializable {
 
-    private static final long serialVersionUID = 12345L;
+    private static final long serialVersionUID = 62945L;
     @Id
     @Column(name = "cod_prerequisito", nullable = false)
     private Integer codPrerequisito;

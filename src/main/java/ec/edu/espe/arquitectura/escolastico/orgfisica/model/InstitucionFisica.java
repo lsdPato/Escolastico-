@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "ofi_institucion")
 public class InstitucionFisica implements Serializable {
 
-    private static final long serialVersionUID = 13456L;
+    private static final long serialVersionUID = 78256L;
     @Id
     @Column(name = "cod_institucion", nullable = false)
     private Integer codInstitucion;
@@ -31,8 +31,8 @@ public class InstitucionFisica implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private Integer version;
-    @OneToMany(mappedBy = "codInstitucion")
-    private List<Sede> sedeList;
+    @OneToMany(mappedBy = "institucion")
+    private List<Sede> sede;
 
     public InstitucionFisica() {
     }
@@ -114,11 +114,11 @@ public class InstitucionFisica implements Serializable {
     }
 
     public List<Sede> getSedeList() {
-        return sedeList;
+        return sede;
     }
 
     public void setSedeList(List<Sede> sedeList) {
-        this.sedeList = sedeList;
+        this.sede = sedeList;
     }
 
     @Override

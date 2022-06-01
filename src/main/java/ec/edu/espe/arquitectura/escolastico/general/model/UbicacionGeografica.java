@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "gen_ubicacion_geografica")
 public class UbicacionGeografica implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 67213L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_ubicacion_geo_int", nullable = false)
@@ -41,7 +41,7 @@ public class UbicacionGeografica implements Serializable {
     @Column(name = "version", nullable = false)
     private Integer version;
     @OneToMany(mappedBy = "codUbicacionGeoInt")
-    private List<InstitucionGeneral> institucionList;
+    private List<InstitucionGeneral> instituciones;
     @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais", nullable = false, insertable = false, updatable = false)
     @ManyToOne
     private Pais pais;
@@ -51,7 +51,7 @@ public class UbicacionGeografica implements Serializable {
     @ManyToOne(optional = false)
     private PaisEstructura paisEstructura;
     @OneToMany(mappedBy = "codUbicacionGeoPadre")
-    private List<UbicacionGeografica> ubicacionGeograficaList;
+    private List<UbicacionGeografica> ubicacionesGeograficas;
     @JoinColumn(name = "cod_ubicacion_geo_padre", referencedColumnName = "cod_ubicacion_geo_int", nullable = false, insertable = false, updatable = false)
     @ManyToOne
     private UbicacionGeografica ubicacionGeoPadre;
@@ -167,12 +167,12 @@ public class UbicacionGeografica implements Serializable {
         this.version = version;
     }
 
-    public List<InstitucionGeneral> getInstitucionList() {
-        return institucionList;
+    public List<InstitucionGeneral> getInstituciones() {
+        return instituciones;
     }
 
-    public void setInstitucionList(List<InstitucionGeneral> institucionList) {
-        this.institucionList = institucionList;
+    public void setInstituciones(List<InstitucionGeneral> institucionList) {
+        this.instituciones = institucionList;
     }
 
     public Pais getPais() {
@@ -191,12 +191,12 @@ public class UbicacionGeografica implements Serializable {
         this.paisEstructura = paisEstructura;
     }
 
-    public List<UbicacionGeografica> getUbicacionGeograficaList() {
-        return ubicacionGeograficaList;
+    public List<UbicacionGeografica> getUbicacionesGeograficas() {
+        return ubicacionesGeograficas;
     }
 
-    public void setUbicacionGeograficaList(List<UbicacionGeografica> ubicacionGeograficaList) {
-        this.ubicacionGeograficaList = ubicacionGeograficaList;
+    public void setUbicacionesGeograficas(List<UbicacionGeografica> ubicacionGeograficaList) {
+        this.ubicacionesGeograficas = ubicacionGeograficaList;
     }
 
     public UbicacionGeografica getUbicacionGeoPadre() {

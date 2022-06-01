@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface PaisRepository extends JpaRepository<Pais, String> {
     Optional<Pais> findByCodigoTelefonico(String codigoTelefonico);
 
-    List<Pais> findByNombreLike(String nombrePattern);
+    List<Pais> findByNombreIgnoreCaseLikeOrderByNombre(String nombrePattern);
 }

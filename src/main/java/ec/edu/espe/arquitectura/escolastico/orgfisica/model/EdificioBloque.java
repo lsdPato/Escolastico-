@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "ofi_edificio_bloque")
 public class EdificioBloque implements Serializable {
 
-    private static final long serialVersionUID = 13456L;
+    private static final long serialVersionUID = 89256L;
     @Id
     @Column(name = "cod_edificio_bloque", nullable = false, length = 8)
     private String codEdificioBloque;
@@ -29,9 +29,9 @@ public class EdificioBloque implements Serializable {
     private Integer version;
     @JoinColumn(name = "cod_edificio", referencedColumnName = "cod_edificio")
     @ManyToOne
-    private Edificio codEdificio;
+    private Edificio edificio;
     @OneToMany(mappedBy = "codEdificioBloque")
-    private List<Aula> aulaList;
+    private List<Aula> aulas;
 
     public EdificioBloque() {
     }
@@ -96,20 +96,20 @@ public class EdificioBloque implements Serializable {
         this.version = version;
     }
 
-    public Edificio getCodEdificio() {
-        return codEdificio;
+    public Edificio getEdificio() {
+        return edificio;
     }
 
-    public void setCodEdificio(Edificio codEdificio) {
-        this.codEdificio = codEdificio;
+    public void setEdificio(Edificio codEdificio) {
+        this.edificio = codEdificio;
     }
 
-    public List<Aula> getAulaList() {
-        return aulaList;
+    public List<Aula> getAulas() {
+        return aulas;
     }
 
-    public void setAulaList(List<Aula> aulaList) {
-        this.aulaList = aulaList;
+    public void setAulas(List<Aula> aulaList) {
+        this.aulas = aulaList;
     }
 
     @Override

@@ -49,7 +49,7 @@ public class Usuario implements Serializable {
     @Column(name = "version", nullable = false)
     private Integer version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private List<UsuarioPerfil> usuarioPerfilList;
+    private List<UsuarioPerfil> usuarioPerfiles;
 
     public Usuario() {
     }
@@ -178,12 +178,12 @@ public class Usuario implements Serializable {
         this.version = version;
     }
 
-    public List<UsuarioPerfil> getUsuarioPerfilList() {
-        return usuarioPerfilList;
+    public List<UsuarioPerfil> getUsuarioPerfiles() {
+        return usuarioPerfiles;
     }
 
-    public void setUsuarioPerfilList(List<UsuarioPerfil> usuarioPerfilList) {
-        this.usuarioPerfilList = usuarioPerfilList;
+    public void setUsuarioPerfiles(List<UsuarioPerfil> usuarioPerfilList) {
+        this.usuarioPerfiles = usuarioPerfilList;
     }
 
     @Override

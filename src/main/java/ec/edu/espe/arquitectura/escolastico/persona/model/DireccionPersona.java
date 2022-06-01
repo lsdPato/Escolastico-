@@ -9,7 +9,7 @@ import java.util.Date;
 @Table(name = "per_direccion_persona")
 public class DireccionPersona implements Serializable {
 
-    private static final long serialVersionUID = 12345L;
+    private static final long serialVersionUID = -3221308720172931970L;
     @EmbeddedId
     private DireccionPersonaPK pk;
     @Column(name = "cod_tipo_direccion", nullable = false, length = 3)

@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public class InstitucionGeneral implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 326784L;
     @Id
     @Column(name = "ruc", nullable = false, length = 13)
     private String ruc;

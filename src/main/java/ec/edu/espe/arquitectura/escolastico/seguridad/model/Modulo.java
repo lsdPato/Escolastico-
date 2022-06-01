@@ -21,7 +21,7 @@ public class Modulo implements Serializable {
     @Column(name = "version", nullable = false)
     private Integer version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codModulo")
-    private List<Funcionalidad> funcionalidadList;
+    private List<Funcionalidad> funcionalidades;
 
     public Modulo() {
     }
@@ -62,12 +62,12 @@ public class Modulo implements Serializable {
         this.version = version;
     }
 
-    public List<Funcionalidad> getFuncionalidadList() {
-        return funcionalidadList;
+    public List<Funcionalidad> getFuncionalidades() {
+        return funcionalidades;
     }
 
-    public void setFuncionalidadList(List<Funcionalidad> funcionalidadList) {
-        this.funcionalidadList = funcionalidadList;
+    public void setFuncionalidades(List<Funcionalidad> funcionalidadList) {
+        this.funcionalidades = funcionalidadList;
     }
 
     @Override

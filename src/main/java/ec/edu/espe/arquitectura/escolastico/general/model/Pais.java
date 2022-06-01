@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Pais implements Serializable {
 
-    private static final long serialVersionUID = 176678L;
+    private static final long serialVersionUID = 1234678L;
     @Id
     @Column(name = "cod_pais", nullable = false, length = 2)
     private String codPais;
@@ -32,9 +32,9 @@ public class Pais implements Serializable {
     @Column(name = "version", nullable = false)
     private Integer version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pais")
-    private List<PaisEstructura> paisEstructuraList;
+    private List<PaisEstructura> paisEstructuras;
     @OneToMany(mappedBy = "codPais")
-    private List<UbicacionGeografica> ubicacionGeograficaList;
+    private List<UbicacionGeografica> ubicacionGeograficas;
 
     public Pais() {
     }
@@ -115,20 +115,20 @@ public class Pais implements Serializable {
         this.version = version;
     }
 
-    public List<PaisEstructura> getPaisEstructuraList() {
-        return paisEstructuraList;
+    public List<PaisEstructura> getPaisEstructuras() {
+        return paisEstructuras;
     }
 
-    public void setPaisEstructuraList(List<PaisEstructura> PaisEstructuraList) {
-        this.paisEstructuraList = PaisEstructuraList;
+    public void setPaisEstructuras(List<PaisEstructura> PaisEstructuraList) {
+        this.paisEstructuras = PaisEstructuraList;
     }
 
-    public List<UbicacionGeografica> getUbicacionGeograficaList() {
-        return ubicacionGeograficaList;
+    public List<UbicacionGeografica> getUbicacionGeograficas() {
+        return ubicacionGeograficas;
     }
 
-    public void setUbicacionGeograficaList(List<UbicacionGeografica> ubicacionGeograficaList) {
-        this.ubicacionGeograficaList = ubicacionGeograficaList;
+    public void setUbicacionGeograficas(List<UbicacionGeografica> ubicacionGeograficaList) {
+        this.ubicacionGeograficas = ubicacionGeograficaList;
     }
 
     @Override

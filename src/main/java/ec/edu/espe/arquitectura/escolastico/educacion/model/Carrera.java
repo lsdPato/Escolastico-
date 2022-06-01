@@ -11,7 +11,7 @@ import javax.persistence.*;
 
 public class Carrera implements Serializable {
 
-    private static final long serialVersionUID = 12345L;
+    private static final long serialVersionUID = 72445L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_carrera", nullable = false)
@@ -39,7 +39,7 @@ public class Carrera implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "carrera")
     private List<MallaCarrera> mallaCarrera;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codCarrera")
-    private List<Matricula> matriculaList;
+    private List<Matricula> matriculas;
     @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)
     @ManyToOne(optional = false)
     private Departamento departamento;
@@ -147,12 +147,12 @@ public class Carrera implements Serializable {
         this.mallaCarrera = mallaCarreraList;
     }
 
-    public List<Matricula> getMatriculaList() {
-        return matriculaList;
+    public List<Matricula> getMatriculas() {
+        return matriculas;
     }
 
-    public void setMatriculaList(List<Matricula> matriculaList) {
-        this.matriculaList = matriculaList;
+    public void setMatriculas(List<Matricula> matriculaList) {
+        this.matriculas = matriculaList;
     }
 
     public Departamento getDepartamento() {

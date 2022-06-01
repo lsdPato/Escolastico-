@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class NrcHorario implements Serializable {
 
-    private static final long serialVersionUID = 12345L;
+    private static final long serialVersionUID = 54345L;
     @EmbeddedId
     private NrcHorarioPK pk;
 

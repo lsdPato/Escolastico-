@@ -29,9 +29,9 @@ public class Perfil implements Serializable {
     @Column(name = "version", nullable = false)
     private Integer version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
-    private List<UsuarioPerfil> usuarioPerfilList;
+    private List<UsuarioPerfil> usuarioPerfiles;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "perfil")
-    private List<PerfilFuncionalidad> perfilFuncionalidadList;
+    private List<PerfilFuncionalidad> perfilFuncionalidades;
 
     public Perfil() {
     }
@@ -96,20 +96,20 @@ public class Perfil implements Serializable {
         this.version = version;
     }
 
-    public List<UsuarioPerfil> getUsuarioPerfilList() {
-        return usuarioPerfilList;
+    public List<UsuarioPerfil> getUsuarioPerfiles() {
+        return usuarioPerfiles;
     }
 
-    public void setUsuarioPerfilList(List<UsuarioPerfil> usuarioPerfilList) {
-        this.usuarioPerfilList = usuarioPerfilList;
+    public void setUsuarioPerfiles(List<UsuarioPerfil> usuarioPerfilList) {
+        this.usuarioPerfiles = usuarioPerfilList;
     }
 
-    public List<PerfilFuncionalidad> getPerfilFuncionalidadList() {
-        return perfilFuncionalidadList;
+    public List<PerfilFuncionalidad> getPerfilFuncionalidades() {
+        return perfilFuncionalidades;
     }
 
-    public void setPerfilFuncionalidadList(List<PerfilFuncionalidad> perfilFuncionalidadList) {
-        this.perfilFuncionalidadList = perfilFuncionalidadList;
+    public void setPerfilFuncionalidades(List<PerfilFuncionalidad> perfilFuncionalidadList) {
+        this.perfilFuncionalidades = perfilFuncionalidadList;
     }
 
     @Override

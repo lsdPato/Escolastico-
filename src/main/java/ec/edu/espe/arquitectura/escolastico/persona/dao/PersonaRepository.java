@@ -8,19 +8,21 @@ import java.util.Date;
 import java.util.List;
 
 public interface PersonaRepository extends JpaRepository<Persona, Integer> {
-    Persona findByIdentificacion(String identificacion);
+    Optional<Persona> findByIdentificacion(String identificacion);
 
-    List<Persona> findByGenero(String genero);
+    List<Persona> findByNombreCompletoIgnoreCaseLikeOrderByNombreCompleto(String nombreCompleto);
 
-    List<Persona> findByNombreCompletoLike(String nombreCompleto);
+    List<Persona> findByApellido1AndApellido2(String apellido1, String apellido2);
 
     List<Persona> findByDiscapacidad(String discapacidad);
+
+    Optional<Persona> findByEmail(String email);
 
     Persona findByEmail(String email);
 
     Persona findByEmailAlterno(String emailAlterno);
 
-    List<Persona> findByFechaNacimientoGreaterThan(Date fechaNacimiento);
+    List<Persona> findByFechaNacimientoBetween(Date fechaInicio, Date fechaFinal);
 
 
     List<Persona> findByEstadoAndNombreCompletoLike(String estado, String nombreCompleto);

@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "edu_institucion_educativa")
 public class InstitucionEducativa implements Serializable {
 
-    private static final long serialVersionUID = 12345L;
+    private static final long serialVersionUID = 21345L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_institucion_educativa", nullable = false)

@@ -12,15 +12,19 @@ import java.util.List;
 @Table(name = "ofi_aula")
 public class Aula implements Serializable {
 
-    private static final long serialVersionUID = 123432L;
+    private static final long serialVersionUID = 653432L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_aula", nullable = false)
     private Integer codAula;
+    @Column(name = "cod_tipo_aula", nullable = false, insertable = false, updatable = false)
+    private String codTipoAula;
     @Column(name = "cod_alterno", nullable = false, length = 10)
     private String codAlterno;
     @Column(name = "capacidad", nullable = false)
     private Integer capacidad;
+    @Column(name = "cod_edificio_bloque", nullable = false, updatable = false, insertable = false)
+    private String codEdificioBloque;
     @Column(name = "piso", nullable = false)
     private Integer piso;
     @Column(name = "aud_usuario", nullable = false, length = 30)
@@ -33,16 +37,16 @@ public class Aula implements Serializable {
     @Column(name = "version", nullable = false)
     private Integer version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "aula")
-    private List<NrcHorario> nrcHorarioList;
+    private List<NrcHorario> nrcHorarios;
     @JoinColumn(name = "cod_edificio", referencedColumnName = "cod_edificio")
     @ManyToOne
-    private Edificio codEdificio;
+    private Edificio edificio;
     @JoinColumn(name = "cod_edificio_bloque", referencedColumnName = "cod_edificio_bloque")
     @ManyToOne
-    private EdificioBloque codEdificioBloque;
+    private EdificioBloque edificioBloque;
     @JoinColumn(name = "cod_tipo_aula", referencedColumnName = "cod_tipo_aula")
     @ManyToOne
-    private TipoAula codTipoAula;
+    private TipoAula tipoAula;
 
     public Aula() {
     }
@@ -115,36 +119,52 @@ public class Aula implements Serializable {
         this.version = version;
     }
 
-    public List<NrcHorario> getNrcHorarioList() {
-        return nrcHorarioList;
+    public List<NrcHorario> getNrcHorarios() {
+        return nrcHorarios;
     }
 
-    public void setNrcHorarioList(List<NrcHorario> nrcHorarioList) {
-        this.nrcHorarioList = nrcHorarioList;
+    public void setNrcHorarios(List<NrcHorario> nrcHorarioList) {
+        this.nrcHorarios = nrcHorarioList;
     }
 
-    public Edificio getCodEdificio() {
-        return codEdificio;
+    public Edificio getEdificio() {
+        return edificio;
     }
 
-    public void setCodEdificio(Edificio codEdificio) {
-        this.codEdificio = codEdificio;
+    public void setEdificio(Edificio codEdificio) {
+        this.edificio = codEdificio;
     }
 
-    public EdificioBloque getCodEdificioBloque() {
+    public String getCodEdificioBloque() {
         return codEdificioBloque;
     }
 
-    public void setCodEdificioBloque(EdificioBloque codEdificioBloque) {
+    public void setCodEdificioBloque(String codEdificioBloque) {
         this.codEdificioBloque = codEdificioBloque;
     }
 
-    public TipoAula getCodTipoAula() {
+    public ec.edu.espe.arquitectura.escolastico.orgfisica.model.EdificioBloque getEdificioBloque() {
+        return edificioBloque;
+    }
+
+    public void setEdificioBloque(ec.edu.espe.arquitectura.escolastico.orgfisica.model.EdificioBloque edificioBloque) {
+        this.edificioBloque = edificioBloque;
+    }
+
+    public String getCodTipoAula() {
         return codTipoAula;
     }
 
-    public void setCodTipoAula(TipoAula codTipoAula) {
+    public void setCodTipoAula(String codTipoAula) {
         this.codTipoAula = codTipoAula;
+    }
+
+    public ec.edu.espe.arquitectura.escolastico.orgfisica.model.TipoAula getTipoAula() {
+        return tipoAula;
+    }
+
+    public void setTipoAula(ec.edu.espe.arquitectura.escolastico.orgfisica.model.TipoAula tipoAula) {
+        this.tipoAula = tipoAula;
     }
 
     @Override

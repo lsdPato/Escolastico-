@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class Periodo implements Serializable {
 
-    private static final long serialVersionUID = 12345L;
+    private static final long serialVersionUID = 34345L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_periodo", nullable = false)

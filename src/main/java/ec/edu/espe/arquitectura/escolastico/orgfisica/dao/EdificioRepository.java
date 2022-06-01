@@ -6,5 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface EdificioRepository extends JpaRepository<Edificio, String> {
-    List<Edificio> findByPoseeAulas(String poseeAulas);
+    List<Edificio> findByPoseeAulasAndCodSede(String poseeAulas, String codSede);
+
+    List<Edificio> findByCodSede(String codSede);
 }

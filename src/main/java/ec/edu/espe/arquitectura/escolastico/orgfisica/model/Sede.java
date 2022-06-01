@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "ofi_sede")
 public class Sede implements Serializable {
 
-    private static final long serialVersionUID = 123456L;
+    private static final long serialVersionUID = 782456L;
     @Id
     @Column(name = "cod_sede", nullable = false, length = 8)
     private String codSede;
@@ -30,10 +30,10 @@ public class Sede implements Serializable {
     @Column(name = "version", nullable = false)
     private Integer version;
     @OneToMany(mappedBy = "codSede")
-    private List<Edificio> edificioList;
+    private List<Edificio> edificios;
     @JoinColumn(name = "cod_institucion", referencedColumnName = "cod_institucion")
     @ManyToOne
-    private InstitucionFisica codInstitucion;
+    private InstitucionFisica institucion;
 
     public Sede() {
     }
@@ -107,19 +107,19 @@ public class Sede implements Serializable {
     }
 
     public List<Edificio> getEdificioList() {
-        return edificioList;
+        return edificios;
     }
 
     public void setEdificioList(List<Edificio> edificioList) {
-        this.edificioList = edificioList;
+        this.edificios = edificioList;
     }
 
     public InstitucionFisica getCodInstitucion() {
-        return codInstitucion;
+        return institucion;
     }
 
     public void setCodInstitucion(InstitucionFisica codInstitucion) {
-        this.codInstitucion = codInstitucion;
+        this.institucion = codInstitucion;
     }
 
     @Override

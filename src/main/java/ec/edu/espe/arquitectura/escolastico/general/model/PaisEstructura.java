@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "gen_pais_estructura")
 public class PaisEstructura implements Serializable {
 
-    private static final long serialVersionUID = 87971L;
+    private static final long serialVersionUID = 972171L;
     @EmbeddedId
     private PaisEstructuraPK pk;
     @Column(name = "nombre", nullable = false, length = 64)
@@ -28,7 +28,7 @@ public class PaisEstructura implements Serializable {
     @ManyToOne(optional = false)
     private Pais pais;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "paisEstructura")
-    private List<UbicacionGeografica> ubicacionGeograficaList;
+    private List<UbicacionGeografica> ubicacionesGeograficas;
 
     public PaisEstructura() {
     }
@@ -93,12 +93,12 @@ public class PaisEstructura implements Serializable {
         this.pais = pais;
     }
 
-    public List<UbicacionGeografica> getUbicacionGeograficaList() {
-        return ubicacionGeograficaList;
+    public List<UbicacionGeografica> getUbicacionesGeograficas() {
+        return ubicacionesGeograficas;
     }
 
-    public void setUbicacionGeograficaList(List<UbicacionGeografica> ubicacionGeograficaList) {
-        this.ubicacionGeograficaList = ubicacionGeograficaList;
+    public void setUbicacionesGeograficas(List<UbicacionGeografica> ubicacionGeograficaList) {
+        this.ubicacionesGeograficas = ubicacionGeograficaList;
     }
 
     @Override

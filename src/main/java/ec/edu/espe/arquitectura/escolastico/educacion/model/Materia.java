@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "edu_materia")
 public class Materia implements Serializable {
 
-    private static final long serialVersionUID = 12349755L;
+    private static final long serialVersionUID = 213459755L;
     @EmbeddedId
     private MateriaPK pk;
     @Column(name = "nombre", nullable = false, length = 255)

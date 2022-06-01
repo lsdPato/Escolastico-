@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface SedeRepository extends JpaRepository<Sede, String> {
     List<Sede> findByEsPrincipal(String esPrincipal);
+    List<Sede> findByDireccionLikeOrderByDireccion(String direccion);
 }

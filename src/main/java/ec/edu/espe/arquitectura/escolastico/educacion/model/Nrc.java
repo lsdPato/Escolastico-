@@ -27,7 +27,7 @@ import java.util.List;
 
 public class Nrc implements Serializable {
 
-    private static final long serialVersionUID = 12345L;
+    private static final long serialVersionUID = 62325L;
     @EmbeddedId
     private NrcPK pk;
     @Column(name = "cupo_disponible", nullable = false)

@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 public class Calificacion implements Serializable {
 
-    private static final long serialVersionUID = 31322L;
+    private static final long serialVersionUID = 41622L;
     @EmbeddedId
     private CalificacionPK pk;
     @Column(name = "nota1", precision = 5, scale = 2)

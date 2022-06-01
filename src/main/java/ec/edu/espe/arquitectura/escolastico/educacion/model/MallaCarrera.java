@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 public class MallaCarrera implements Serializable {
 
-    private static final long serialVersionUID = 12345L;
+    private static final long serialVersionUID = 21345L;
     @Id
     @Column(name = "cod_materiacarrera", nullable = false)
     private Integer codMateriacarrera;

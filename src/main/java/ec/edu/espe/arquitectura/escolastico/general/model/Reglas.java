@@ -10,7 +10,7 @@ import java.util.Date;
 @Table(name = "gen_reglas")
 public class Reglas implements Serializable {
 
-    private static final long serialVersionUID = 156478L;
+    private static final long serialVersionUID = 1234478L;
     @Id
     @Column(name = "cod_regla", nullable = false, length = 30)
     private String codRegla;

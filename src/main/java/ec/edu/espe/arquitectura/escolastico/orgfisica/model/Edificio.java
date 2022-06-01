@@ -10,12 +10,14 @@ import java.util.List;
 @Table(name = "ofi_edificio")
 public class Edificio implements Serializable {
 
-    private static final long serialVersionUID = 12344L;
+    private static final long serialVersionUID = 132444L;
     @Id
     @Column(name = "cod_edificio", nullable = false, length = 8)
     private String codEdificio;
     @Column(name = "nombre", nullable = false, length = 128)
     private String nombre;
+    @Column(name = "cod_sede", length = 8)
+    private String codSede;
     @Column(name = "cod_alterno", length = 16)
     private String codAlterno;
     @Column(name = "descripcion", nullable = false, length = 500)
@@ -28,6 +30,7 @@ public class Edificio implements Serializable {
     private String manejaBloques;
     @Column(name = "posee_aulas", nullable = false, length = 1)
     private String poseeAulas;
+
     @Column(name = "pisos", nullable = false)
     private Integer pisos;
     @Column(name = "aud_usuario", nullable = false, length = 30)
@@ -39,13 +42,13 @@ public class Edificio implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private Integer version;
-    @JoinColumn(name = "cod_sede", referencedColumnName = "cod_sede")
+    @JoinColumn(name = "cod_sede", referencedColumnName = "cod_sede", nullable = false,updatable = false,insertable = false)
     @ManyToOne
-    private Sede codSede;
-    @OneToMany(mappedBy = "codEdificio")
-    private List<EdificioBloque> edificioBloqueList;
-    @OneToMany(mappedBy = "codEdificio")
-    private List<Aula> aulaList;
+    private Sede sede;
+    @OneToMany(mappedBy = "edificio")
+    private List<EdificioBloque> edificioBloque;
+    @OneToMany(mappedBy = "edificio")
+    private List<Aula> aulas;
 
     public Edificio() {
     }
@@ -158,28 +161,36 @@ public class Edificio implements Serializable {
         this.version = version;
     }
 
-    public Sede getCodSede() {
+    public String getCodSede() {
         return codSede;
     }
 
-    public void setCodSede(Sede codSede) {
+    public void setCodSede(String codSede) {
         this.codSede = codSede;
     }
 
-    public List<EdificioBloque> getEdificioBloqueList() {
-        return edificioBloqueList;
+    public Sede getSede() {
+        return sede;
     }
 
-    public void setEdificioBloqueList(List<EdificioBloque> edificioBloqueList) {
-        this.edificioBloqueList = edificioBloqueList;
+    public void setSede(Sede sede) {
+        this.sede = sede;
     }
 
-    public List<Aula> getAulaList() {
-        return aulaList;
+    public List<EdificioBloque> getEdificioBloque() {
+        return edificioBloque;
     }
 
-    public void setAulaList(List<Aula> aulaList) {
-        this.aulaList = aulaList;
+    public void setEdificioBloque(List<EdificioBloque> edificioBloque) {
+        this.edificioBloque = edificioBloque;
+    }
+
+    public List<Aula> getAulas() {
+        return aulas;
+    }
+
+    public void setAulas(List<Aula> aulas) {
+        this.aulas = aulas;
     }
 
     @Override

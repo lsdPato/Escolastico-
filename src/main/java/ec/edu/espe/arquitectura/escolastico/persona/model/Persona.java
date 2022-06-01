@@ -14,7 +14,6 @@ import java.util.List;
 @Table(name = "per_persona")
 public class Persona implements Serializable {
 
-    private static final long serialVersionUID = 134234L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_persona", nullable = false)
@@ -72,12 +71,12 @@ public class Persona implements Serializable {
     @Column(name = "version", nullable = false)
     private Integer version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
-    private List<DireccionPersona> direccionPersonaList;
+    private List<DireccionPersona> direcciones;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
-    private List<Matricula> matriculaList;
+    private List<Matricula> matriculas;
     @JoinColumn(name = "cod_pais_nacimiento", referencedColumnName = "cod_pais")
     @ManyToOne
-    private Pais codPaisNacimiento;
+    private Pais paisNacimiento;
     @JoinColumn(name = "nacionalidad", referencedColumnName = "cod_pais", nullable = false)
     @ManyToOne(optional = false)
     private Pais nacionalidad;
@@ -86,16 +85,16 @@ public class Persona implements Serializable {
     private UbicacionGeografica lugarNacimiento;
     @JoinColumn(name = "cod_tipo_discapacidad", referencedColumnName = "cod_tipo_discapacidad")
     @ManyToOne
-    private TipoDiscapacidad codTipoDiscapacidad;
+    private TipoDiscapacidad tipoDiscapacidad;
     @JoinColumn(name = "cod_tipo_persona", referencedColumnName = "cod_tipo_persona")
     @ManyToOne
-    private TipoPersona codTipoPersona;
+    private TipoPersona tipoPersona;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
-    private List<DocumentoPersona> documentoPersonaList;
+    private List<DocumentoPersona> documentos;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
-    private List<FamiliarPersona> familiarPersonaList;
+    private List<FamiliarPersona> familiares;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
-    private List<HistTipoPersona> histTipoPersonaList;
+    private List<HistTipoPersona> historialesTipoPersona;
 
     public Persona() {
     }
@@ -312,28 +311,28 @@ public class Persona implements Serializable {
         this.version = version;
     }
 
-    public List<DireccionPersona> getDireccionPersonaList() {
-        return direccionPersonaList;
+    public List<DireccionPersona> getDirecciones() {
+        return direcciones;
     }
 
-    public void setDireccionPersonaList(List<DireccionPersona> direccionPersonaList) {
-        this.direccionPersonaList = direccionPersonaList;
+    public void setDirecciones(List<DireccionPersona> direccionPersonaList) {
+        this.direcciones = direccionPersonaList;
     }
 
-    public List<Matricula> getMatriculaList() {
-        return matriculaList;
+    public List<Matricula> getMatriculas() {
+        return matriculas;
     }
 
-    public void setMatriculaList(List<Matricula> matriculaList) {
-        this.matriculaList = matriculaList;
+    public void setMatriculas(List<Matricula> matriculaList) {
+        this.matriculas = matriculaList;
     }
 
-    public Pais getCodPaisNacimiento() {
-        return codPaisNacimiento;
+    public Pais getPaisNacimiento() {
+        return paisNacimiento;
     }
 
-    public void setCodPaisNacimiento(Pais codPaisNacimiento) {
-        this.codPaisNacimiento = codPaisNacimiento;
+    public void setPaisNacimiento(Pais codPaisNacimiento) {
+        this.paisNacimiento = codPaisNacimiento;
     }
 
     public Pais getNacionalidad() {
@@ -352,44 +351,44 @@ public class Persona implements Serializable {
         this.lugarNacimiento = lugarNacimiento;
     }
 
-    public TipoDiscapacidad getCodTipoDiscapacidad() {
-        return codTipoDiscapacidad;
+    public TipoDiscapacidad getTipoDiscapacidad() {
+        return tipoDiscapacidad;
     }
 
-    public void setCodTipoDiscapacidad(TipoDiscapacidad codTipoDiscapacidad) {
-        this.codTipoDiscapacidad = codTipoDiscapacidad;
+    public void setTipoDiscapacidad(TipoDiscapacidad codTipoDiscapacidad) {
+        this.tipoDiscapacidad = codTipoDiscapacidad;
     }
 
-    public TipoPersona getCodTipoPersona() {
-        return codTipoPersona;
+    public TipoPersona getTipoPersona() {
+        return tipoPersona;
     }
 
-    public void setCodTipoPersona(TipoPersona codTipoPersona) {
-        this.codTipoPersona = codTipoPersona;
+    public void setTipoPersona(TipoPersona codTipoPersona) {
+        this.tipoPersona = codTipoPersona;
     }
 
-    public List<DocumentoPersona> getDocumentoPersonaList() {
-        return documentoPersonaList;
+    public List<DocumentoPersona> getDocumentos() {
+        return documentos;
     }
 
-    public void setDocumentoPersonaList(List<DocumentoPersona> documentoPersonaList) {
-        this.documentoPersonaList = documentoPersonaList;
+    public void setDocumentos(List<DocumentoPersona> documentoPersonaList) {
+        this.documentos = documentoPersonaList;
     }
 
-    public List<FamiliarPersona> getFamiliarPersonaList() {
-        return familiarPersonaList;
+    public List<FamiliarPersona> getFamiliares() {
+        return familiares;
     }
 
-    public void setFamiliarPersonaList(List<FamiliarPersona> familiarPersonaList) {
-        this.familiarPersonaList = familiarPersonaList;
+    public void setFamiliares(List<FamiliarPersona> familiarPersonaList) {
+        this.familiares = familiarPersonaList;
     }
 
-    public List<HistTipoPersona> getHistTipoPersonaList() {
-        return histTipoPersonaList;
+    public List<HistTipoPersona> getHistorialesTipoPersona() {
+        return historialesTipoPersona;
     }
 
-    public void setHistTipoPersonaList(List<HistTipoPersona> histTipoPersonaList) {
-        this.histTipoPersonaList = histTipoPersonaList;
+    public void setHistorialesTipoPersona(List<HistTipoPersona> histTipoPersonaList) {
+        this.historialesTipoPersona = histTipoPersonaList;
     }
 
     @Override

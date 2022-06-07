@@ -17,7 +17,9 @@ public interface PersonaRepository extends JpaRepository<Persona, Integer> {
 
     List<Persona> findByDiscapacidad(String discapacidad);
 
-    Optional<Persona> findByEmail(String email);
+    Optional<Persona> findByEmailOrderByEmail(String email);
+
+
 
     Persona findByEmailAlterno(String emailAlterno);
 

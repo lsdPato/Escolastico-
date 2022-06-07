@@ -9,9 +9,9 @@ import java.util.List;
 public interface UsuarioRepository extends JpaRepository<Usuario, String> {
     Usuario findByMail(String mail);
 
-    List<Usuario> findByNombreLike(String nombrePattern);
+    List<Usuario> findByNombreLikeOrderByNombre(String nombrePattern);
 
     List<Usuario> findByEstado(String estado);
 
-    List<Usuario> findByNombreLikeAndEstado(String nombrePattern, String estado);
+    List<Usuario> findByNombreLikeAndEstadoOrderByNombre(String nombrePattern, String estado);
 }

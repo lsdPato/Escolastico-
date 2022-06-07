@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "edu_materia")
 public class Materia implements Serializable {

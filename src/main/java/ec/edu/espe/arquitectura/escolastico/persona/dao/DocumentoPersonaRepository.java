@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface DocumentoPersonaRepository extends JpaRepository<DocumentoPersona, DocumentoPersonaPK> {
-    List<DocumentoPersona> findByEstadoAndFechaRegistroGreaterThan(String estado, Date fechaRegistro);
+    List<DocumentoPersona> findByEstadoAndPkCodPersona(String estado, Integer codPersona);
 
-    List<DocumentoPersona> findByEstadoAndFechaRegistroGreaterThanAndArchivado(String estado, Date fechaRegistro, String archivado);
+    List<DocumentoPersona> findByPkCodPersonaAndFechaRegistro(Integer codPersona, Date fechaRegistro);
 }

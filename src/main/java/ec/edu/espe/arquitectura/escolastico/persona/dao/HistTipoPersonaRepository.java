@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface HistTipoPersonaRepository extends JpaRepository<HistTipoPersona, HistTipoPersonaPK> {
-    List<HistTipoPersona> findByCodUsuarioIniAndFechaInicioGreaterThan(String codUsuarioIni, Date fechaInicio);
+    List<HistTipoPersona> findByFechaInicioBetween(Date fechaInicio, Date fechaFinal);
 
-    List<HistTipoPersona> findByCodUsuarioFinAndFechaFinGreaterThan(String codUsuarioFin, Date fechaFin);
+    List<HistTipoPersona> findByFechaInicioBetweenAndPkCodTipoPersona(Date fechaInicio, Date fechaFinal, String codTipoPersona);
 }

@@ -8,8 +8,8 @@ import java.util.Date;
 @Entity
 @Table(name = "per_hist_tipo_persona")
 public class HistTipoPersona implements Serializable {
+    private static final long serialVersionUID = -442484961701069620L;
 
-    private static final long serialVersionUID = 134543L;
     @EmbeddedId
     private HistTipoPersonaPK pk;
     @Column(name = "fecha_inicio", nullable = false)

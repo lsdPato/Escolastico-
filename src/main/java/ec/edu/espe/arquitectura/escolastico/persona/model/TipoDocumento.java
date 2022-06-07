@@ -9,8 +9,8 @@ import java.util.Date;
 @Table(name = "per_tipo_documento")
 
 public class TipoDocumento implements Serializable {
+    private static final long serialVersionUID = -5150164025832466090L;
 
-    private static final long serialVersionUID = 1232154L;
     @Id
     @Column(name = "cod_tipo_documento", nullable = false, length = 16)
     private String codTipoDocumento;

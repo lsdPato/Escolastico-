@@ -8,8 +8,8 @@ import java.util.Date;
 @Entity
 @Table(name = "per_documento_persona")
 public class DocumentoPersona implements Serializable {
+    private static final long serialVersionUID = 6794807083743892152L;
 
-    private static final long serialVersionUID = 12233L;
     @EmbeddedId
     private DocumentoPersonaPK pk;
     @Column(name = "estado", nullable = false, length = 3)

@@ -9,8 +9,8 @@ import java.util.Date;
 @Table(name = "per_tipo_discapacidad")
 
 public class TipoDiscapacidad implements Serializable {
+    private static final long serialVersionUID = 8606416761715409692L;
 
-    private static final long serialVersionUID = 16565L;
     @Id
     @Column(name = "cod_tipo_discapacidad", nullable = false, length = 8)
     private String codTipoDiscapacidad;

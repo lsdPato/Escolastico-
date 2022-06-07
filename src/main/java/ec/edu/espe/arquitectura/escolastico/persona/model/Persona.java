@@ -13,6 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "per_persona")
 public class Persona implements Serializable {
+    private static final long serialVersionUID = -1471250292976955422L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

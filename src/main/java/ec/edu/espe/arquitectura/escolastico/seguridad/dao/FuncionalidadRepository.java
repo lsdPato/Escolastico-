@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface FuncionalidadRepository extends JpaRepository<Funcionalidad, Integer> {
     List<Funcionalidad> findByCodModuloAndEstado(String codModulo, String estado);
+    List<Funcionalidad> findByEstado(String estado);
 }

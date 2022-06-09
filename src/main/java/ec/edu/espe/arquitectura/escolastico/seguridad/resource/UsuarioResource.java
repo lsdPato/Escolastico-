@@ -1,10 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.resource;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario;
 import ec.edu.espe.arquitectura.escolastico.seguridad.service.UsuarioService;
@@ -23,5 +20,10 @@ public class UsuarioResource {
     public ResponseEntity<Usuario> crear(@RequestBody Usuario usuario) {
         usuario = this.usuarioService.crear(usuario);
         return ResponseEntity.ok(usuario);
+    }
+
+    @GetMapping
+    public ResponseEntity<Usuario> buscarPorMail(@RequestBody String mail){
+        return ResponseEntity.ok(this.usuarioService.buscarPorMail(mail));
     }
 }

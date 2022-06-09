@@ -4,6 +4,7 @@ import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CambioClaveExcep
 import ec.edu.espe.arquitectura.escolastico.seguridad.EstadoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioPerfilRespository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioRepository;
+import ec.edu.espe.arquitectura.escolastico.seguridad.exception.UsuarioNoEncontradoException;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -34,7 +35,11 @@ public class UsuarioService {
     }
 
     public Usuario buscarPorMail(String mail) {
-        return this.usuarioRepository.findByMail(mail);
+        Usuario usuario = this.usuarioRepository.findByMail(mail);
+        if (usuario == null){
+            throw new UsuarioNoEncontradoException("Usuario no encontrado");
+        }
+        return usuario;
     }
 
     public Usuario buscarPorCodigoOMail(String valor) {

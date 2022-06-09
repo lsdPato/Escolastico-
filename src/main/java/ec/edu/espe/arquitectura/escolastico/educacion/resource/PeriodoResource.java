@@ -40,5 +40,6 @@ public class PeriodoResource {
             e.printStackTrace();
             return ResponseEntity.badRequest().build();
         }
+
     }
 }

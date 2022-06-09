@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
 
+import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Date;
 
@@ -22,9 +23,10 @@ public class AuthService {
     private final RegistroSesionRepository registroSesionRepository;
 
 
-    public Usuario autenticarUsuario(String mail, String clave) {
+    public Usuario autenticarUsuario(String mail, String clave) throws UnknownHostException {
 
-        String Ip = "192.168.1.1";
+
+        String ip = InetAddress.getLocalHost().getHostAddress();
         RegistroSesion registroSesion = new RegistroSesion();
         Usuario usuarioBd = this.usuarioRepository.findByMail(mail);
 
@@ -44,7 +46,7 @@ public class AuthService {
             usuarioBd.setNroIntentosFallidos(usuarioBd.getNroIntentosFallidos() + 1);
             registroSesion.setCodUsuario(usuarioBd.getCodUsuario());
             registroSesion.setFechaConexion(new Date());
-            registroSesion.setIpConexion(Ip);
+            registroSesion.setIpConexion(ip);
             registroSesion.setError("Intento numero:" + usuarioBd.getNroIntentosFallidos());
             registroSesion.setResultado(ResultadosEnum.FALLIDO.getValor());
 
@@ -54,7 +56,7 @@ public class AuthService {
 
         registroSesion.setCodUsuario(usuarioBd.getCodUsuario());
         registroSesion.setFechaConexion(new Date());
-        registroSesion.setIpConexion(Ip);
+        registroSesion.setIpConexion(ip);
         registroSesion.setResultado(ResultadosEnum.SATISFACTORIO.getValor());
         usuarioBd.setNroIntentosFallidos(0);
 

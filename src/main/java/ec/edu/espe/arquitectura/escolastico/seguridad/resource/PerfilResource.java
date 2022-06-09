@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/servicio")
+@RequestMapping(path = "/perfil")
 @RequiredArgsConstructor
 public class PerfilResource {
     private final PerfilService service;
@@ -29,6 +29,8 @@ public class PerfilResource {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @PutMapping
     public ResponseEntity<Perfil> modificar(@RequestBody Perfil perfil) {
         try {
             this.service.modificar(perfil);

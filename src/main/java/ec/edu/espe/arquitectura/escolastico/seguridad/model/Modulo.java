@@ -1,13 +1,14 @@
 
 package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "seg_modulo")
-
 public class Modulo implements Serializable {
 
     private static final long serialVersionUID = 1324321L;
@@ -18,9 +19,11 @@ public class Modulo implements Serializable {
     private String nombre;
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
+
+    @Version
     @Column(name = "version", nullable = false)
     private Integer version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codModulo")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codModulo", fetch = FetchType.EAGER)
     private List<Funcionalidad> funcionalidades;
 
     public Modulo() {

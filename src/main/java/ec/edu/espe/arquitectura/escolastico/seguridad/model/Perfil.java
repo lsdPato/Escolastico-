@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "seg_perfil")
-@Proxy(lazy = false)
+
 public class Perfil implements Serializable {
 
     private static final long serialVersionUID = 1324324L;
@@ -32,9 +32,8 @@ public class Perfil implements Serializable {
     @Version
     @Column(name = "version", nullable = false)
     private Integer version;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "perfil")
-    private List<UsuarioPerfil> usuarioPerfiles;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "perfil")
+
+    @OneToMany( fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "perfil")
     private List<PerfilFuncionalidad> perfilFuncionalidades;
 
     public Perfil() {
@@ -100,13 +99,6 @@ public class Perfil implements Serializable {
         this.version = version;
     }
 
-    public List<UsuarioPerfil> getUsuarioPerfiles() {
-        return usuarioPerfiles;
-    }
-
-    public void setUsuarioPerfiles(List<UsuarioPerfil> usuarioPerfilList) {
-        this.usuarioPerfiles = usuarioPerfilList;
-    }
 
     public List<PerfilFuncionalidad> getPerfilFuncionalidades() {
         return perfilFuncionalidades;

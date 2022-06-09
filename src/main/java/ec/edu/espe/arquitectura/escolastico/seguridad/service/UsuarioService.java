@@ -5,6 +5,7 @@ import ec.edu.espe.arquitectura.escolastico.seguridad.EstadoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioPerfilRespository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.exception.UsuarioNoEncontradoException;
+import ec.edu.espe.arquitectura.escolastico.seguridad.model.Modulo;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -50,6 +51,7 @@ public class UsuarioService {
         return usuario;
     }
 
+
     public List<Usuario> buscarPorNombre(String nombrePattern) {
         return this.usuarioRepository.findByNombreLikeOrderByNombre("%" + nombrePattern + "%");
     }
@@ -84,4 +86,12 @@ public class UsuarioService {
         usuario.setFechaCambioClave(new Date());
         this.usuarioRepository.save(usuario);
     }
+
+    public void modificar(Usuario usuario) {
+        Usuario usuarioBd = this.buscarPorCodigo(usuario.getCodUsuario());
+        usuarioBd.setNombre(usuarioBd.getNombre());
+        usuarioBd.setEstado(usuarioBd.getEstado());
+        this.usuarioRepository.save(usuarioBd);
+    }
+
 }

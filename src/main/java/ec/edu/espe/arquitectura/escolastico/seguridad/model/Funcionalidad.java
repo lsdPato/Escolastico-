@@ -33,13 +33,12 @@ public class Funcionalidad implements Serializable {
     private Date audFecha;
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
+
     @Column(name = "version", nullable = false)
     @Version
     private Integer version;
-    @JoinColumn(name = "cod_modulo", referencedColumnName = "cod_modulo", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Modulo modulo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "funcionalidad")
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "funcionalidad", fetch = FetchType.EAGER)
     private List<PerfilFuncionalidad> perfilFuncionalidades;
 
     public Funcionalidad() {
@@ -129,13 +128,6 @@ public class Funcionalidad implements Serializable {
         this.version = version;
     }
 
-    public Modulo getModulo() {
-        return modulo;
-    }
-
-    public void setModulo(Modulo modulo) {
-        this.modulo = modulo;
-    }
 
     public List<PerfilFuncionalidad> getPerfilFuncionalidades() {
         return perfilFuncionalidades;

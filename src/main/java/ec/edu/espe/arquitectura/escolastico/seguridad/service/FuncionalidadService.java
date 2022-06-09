@@ -6,6 +6,7 @@ import ec.edu.espe.arquitectura.escolastico.seguridad.dao.FuncionalidadRepositor
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.PerfilFuncionalidadRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Funcionalidad;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Modulo;
+import ec.edu.espe.arquitectura.escolastico.seguridad.model.Perfil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,12 @@ public class FuncionalidadService {
         funcionalidad.setEstado(EstadosEnum.INACTIVO.getValor());
         this.funcionalidadRepository.save(funcionalidad);
         this.perfilFuncionalidadRepository.saveAll(funcionalidad.getPerfilFuncionalidades());
+    }
+    public void modificar(Funcionalidad funcionalidad) {
+        Funcionalidad funcionalidadBD = this.obtenerPorCodigo(funcionalidad.getCodFuncionalidad());
+        funcionalidadBD.setNombre(funcionalidad.getNombre());
+        funcionalidadBD.setEstado(funcionalidad.getEstado());
+        this.funcionalidadRepository.save(funcionalidadBD);
     }
 
 

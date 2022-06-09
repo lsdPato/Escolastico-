@@ -1,6 +1,8 @@
 
 package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -48,6 +50,7 @@ public class Usuario implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private Integer version;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private List<UsuarioPerfil> usuarioPerfiles;
 

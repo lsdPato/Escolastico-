@@ -1,6 +1,8 @@
 
 package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -8,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "seg_perfil")
-
+@Proxy(lazy = false)
 public class Perfil implements Serializable {
 
     private static final long serialVersionUID = 1324324L;

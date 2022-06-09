@@ -1,4 +1,4 @@
-package ec.edu.espe.arquitectura.escolastico.seguridad;
+package ec.edu.espe.arquitectura.escolastico.seguridad.exception;
 
 public class CambioClaveException extends Exception {
 

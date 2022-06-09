@@ -2,6 +2,7 @@ package ec.edu.espe.arquitectura.escolastico.seguridad.resource;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ public class UsuarioResource {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> crear(Usuario usuario) {
+    public ResponseEntity<Usuario> crear(@RequestBody Usuario usuario) {
         usuario = this.usuarioService.crear(usuario);
         return ResponseEntity.ok(usuario);
     }

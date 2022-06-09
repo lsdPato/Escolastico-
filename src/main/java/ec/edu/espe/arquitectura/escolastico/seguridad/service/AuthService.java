@@ -23,35 +23,44 @@ public class AuthService {
     private final RegistroSesionRepository registroSesionRepository;
 
 
-    public Usuario AuthenUsuario(String mail, String clave) throws UnknownHostException {
+    public Usuario autenticarUsuario(String mail, String clave) {
 
-        String Ip = InetAddress.getLocalHost().getHostAddress();
+        String Ip = "192.168.1.1";
         RegistroSesion registroSesion = new RegistroSesion();
         Usuario usuarioBd = this.usuarioRepository.findByMail(mail);
+
         if (usuarioBd == null) {
-            return null;
-        } else {
-            if (usuarioBd.getEstado().equals(EstadosEnum.ACTIVO.getValor())) {
-                if (DigestUtils.sha256Hex(clave).equals(usuarioBd.getClave())) {
-                    registroSesion.setCodUsuario(usuarioBd.getCodUsuario());
-                    registroSesion.setFechaConexion(new Date());
-                    registroSesion.setIpConexion(Ip);
-                    registroSesion.setResultado(ResultadosEnum.SATISFACTORIO.getValor());
-                    usuarioBd.setNroIntentosFallidos(0);
-
-                } else {
-                    usuarioBd.setNroIntentosFallidos(usuarioBd.getNroIntentosFallidos() + 1);
-                    registroSesion.setCodUsuario(usuarioBd.getCodUsuario());
-                    registroSesion.setFechaConexion(new Date());
-                    registroSesion.setIpConexion(Ip);
-                    registroSesion.setError("Intento numero:" + usuarioBd.getNroIntentosFallidos());
-                    registroSesion.setResultado(ResultadosEnum.FALLIDO.getValor());
-                    this.usuarioRepository.save(usuarioBd);
-                }
-                this.registroSesionRepository.save(registroSesion);
-            }
-
+            throw new UsuarioNoEncontradoException(
+                    "El usuario o contraseña son incorrecto(s).");
         }
+
+        boolean esUsuarioInactivo = usuarioBd.getEstado().equals(EstadosEnum.INACTIVO.getValor());
+        if (esUsuarioInactivo) {
+            throw new UsuarioInactivoException(
+                    "El usuario no está activo y no puede ingresar al sistema.");
+        }
+
+        boolean clavesNoCoinciden = !DigestUtils.sha256Hex(clave).equals(usuarioBd.getClave());
+        if (clavesNoCoinciden) {
+            usuarioBd.setNroIntentosFallidos(usuarioBd.getNroIntentosFallidos() + 1);
+            registroSesion.setCodUsuario(usuarioBd.getCodUsuario());
+            registroSesion.setFechaConexion(new Date());
+            registroSesion.setIpConexion(Ip);
+            registroSesion.setError("Intento numero:" + usuarioBd.getNroIntentosFallidos());
+            registroSesion.setResultado(ResultadosEnum.FALLIDO.getValor());
+
+            this.registroSesionRepository.save(registroSesion);
+            return null;
+        }
+
+        registroSesion.setCodUsuario(usuarioBd.getCodUsuario());
+        registroSesion.setFechaConexion(new Date());
+        registroSesion.setIpConexion(Ip);
+        registroSesion.setResultado(ResultadosEnum.SATISFACTORIO.getValor());
+        usuarioBd.setNroIntentosFallidos(0);
+
+        this.usuarioRepository.save(usuarioBd);
+        this.registroSesionRepository.save(registroSesion);
 
         return usuarioBd;
     }

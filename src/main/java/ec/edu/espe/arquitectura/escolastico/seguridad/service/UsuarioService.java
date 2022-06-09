@@ -1,6 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.service;
 
-import ec.edu.espe.arquitectura.escolastico.seguridad.CambioClaveException;
+import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CambioClaveException;
 import ec.edu.espe.arquitectura.escolastico.seguridad.EstadoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioPerfilRespository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioRepository;

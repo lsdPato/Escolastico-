@@ -8,6 +8,7 @@ import java.util.Date;
 @Entity
 @Table(name = "seg_usuario_perfil")
 
+
 public class UsuarioPerfil implements Serializable {
 
     private static final long serialVersionUID = 165465L;

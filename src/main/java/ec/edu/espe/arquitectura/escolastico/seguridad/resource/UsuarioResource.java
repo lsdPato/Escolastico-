@@ -1,5 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.resource;
 
+import ec.edu.espe.arquitectura.escolastico.seguridad.model.Modulo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,19 @@ public class UsuarioResource {
     }
 
     @GetMapping
-    public ResponseEntity<Usuario> buscarPorMail(@RequestBody String mail){
+    public ResponseEntity<Usuario> buscarPorMail(@RequestParam("email") String mail){
         return ResponseEntity.ok(this.usuarioService.buscarPorMail(mail));
     }
+    @PutMapping
+    public ResponseEntity<Usuario> modificar(@RequestBody Usuario usuario) {
+        try {
+            this.usuarioService.modificar(usuario);
+            usuario = this.usuarioService.buscarPorCodigo(usuario.getCodUsuario());
+            return ResponseEntity.ok(usuario);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 }

@@ -34,8 +34,8 @@ public class PerfilResource {
     public ResponseEntity<Perfil> modificar(@RequestBody Perfil perfil) {
         try {
             this.service.modificar(perfil);
-            perfil = this.service.obtenerPorCodigo(perfil.getCodPerfil());
-            return ResponseEntity.ok(perfil);
+            this.service.obtenerPorCodigo(perfil.getCodPerfil());
+            return ResponseEntity.ok(this.service.obtenerPorCodigo(perfil.getCodPerfil()));
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().build();

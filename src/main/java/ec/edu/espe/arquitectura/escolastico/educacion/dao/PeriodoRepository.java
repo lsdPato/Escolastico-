@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface PeriodoRepository extends JpaRepository<Periodo, Integer> {
 
-    List<Periodo> findByFechaInicio(Date fechaInicio);
+    List<Periodo> findByFechaInicioAndNivel(Date fechaInicio, String modalidad);
 
     List<Periodo> findByNombreLike(String nombre);
 

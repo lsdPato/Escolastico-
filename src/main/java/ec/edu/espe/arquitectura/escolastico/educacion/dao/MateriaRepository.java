@@ -10,6 +10,6 @@ import java.util.Optional;
 public interface MateriaRepository extends JpaRepository<Materia, MateriaPK> {
     List<Materia> findByNombreLikeOrderByNombre(String nombrePattern);
 
-    Optional<Materia> findByMateriaPk(Integer codMateria, Integer codPeriodo);
+    Optional<Materia> findByPkCodMateriaAndPkCodDepartamento(Integer codMateria, Integer codPeriodo);
 
 }

@@ -2,10 +2,6 @@ package ec.edu.espe.arquitectura.escolastico.educacion.service;
 
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.PeriodoRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Periodo;
-import ec.edu.espe.arquitectura.escolastico.seguridad.EstadosEnum;
-import ec.edu.espe.arquitectura.escolastico.seguridad.dao.ModuloRepository;
-import ec.edu.espe.arquitectura.escolastico.seguridad.model.Modulo;
-import ec.edu.espe.arquitectura.escolastico.seguridad.service.ModuloService;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;

@@ -1,6 +1,8 @@
 
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
@@ -22,6 +24,7 @@ public class Departamento implements Serializable {
     @Column(name = "siglas", nullable = false, length = 32)
     private String siglas;
     @OneToMany(fetch = FetchType.EAGER ,cascade = CascadeType.ALL, mappedBy = "departamento")
+    @JsonManagedReference
     private List<Carrera> carreras;
 
     public Departamento() {

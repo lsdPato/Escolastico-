@@ -1,6 +1,8 @@
 
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -16,6 +18,10 @@ public class Carrera implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_carrera", nullable = false)
     private Integer codCarrera;
+
+    @Column(name = "cod_departamento", nullable = false)
+    private Integer codDepartamento;
+
     @Column(name = "nombre", nullable = false, length = 255)
     private String nombre;
     @Column(name = "total_semestres", nullable = false)
@@ -36,12 +42,12 @@ public class Carrera implements Serializable {
     private BigDecimal precioCredito;
     @Column(name = "modalidad", length = 64)
     private String modalidad;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "carrera")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "carrera")
     private List<MallaCarrera> mallaCarrera;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codCarrera")
-    private List<Matricula> matriculas;
-    @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)
+
+    @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
+    @JsonBackReference
     private Departamento departamento;
 
     public Carrera() {
@@ -57,6 +63,14 @@ public class Carrera implements Serializable {
 
     public void setCodCarrera(Integer codCarrera) {
         this.codCarrera = codCarrera;
+    }
+
+    public Integer getCodDepartamento() {
+        return codDepartamento;
+    }
+
+    public void setCodDepartamento(Integer codDepartamento) {
+        this.codDepartamento = codDepartamento;
     }
 
     public String getNombre() {
@@ -145,14 +159,6 @@ public class Carrera implements Serializable {
 
     public void setMallaCarrera(List<MallaCarrera> mallaCarreraList) {
         this.mallaCarrera = mallaCarreraList;
-    }
-
-    public List<Matricula> getMatriculas() {
-        return matriculas;
-    }
-
-    public void setMatriculas(List<Matricula> matriculaList) {
-        this.matriculas = matriculaList;
     }
 
     public Departamento getDepartamento() {

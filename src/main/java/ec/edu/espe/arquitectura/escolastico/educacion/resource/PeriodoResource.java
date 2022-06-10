@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class PeriodoResource {
     }
 
     @GetMapping(path = "/buscar/modalidadfecha")
-    public ResponseEntity<List<Periodo>> listarPorFechaInicialYModalidad(@RequestBody BusquedaPeriodosDto busqueda){
+    public ResponseEntity<List<Periodo>> listarPorFechaInicialYModalidad(@RequestBody BusquedaPeriodosDto busqueda) throws ParseException {
         return ResponseEntity.ok(this.service.listarPorFechaInicialYModalidad(busqueda.getFecha(), busqueda.getModalidad()));
     }
 

@@ -8,6 +8,8 @@ import ec.edu.espe.arquitectura.escolastico.seguridad.model.Modulo;
 import ec.edu.espe.arquitectura.escolastico.seguridad.service.ModuloService;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -28,8 +30,10 @@ public class PeriodoService {
         return this.periodoRepository.findByNivel(modalidad);
     }
 
-    public List<Periodo> listarPorFechaInicialYModalidad(Date fecha, String modalidad){
-        return this.periodoRepository.findByFechaInicioAndNivel(fecha, modalidad);
+    public List<Periodo> listarPorFechaInicialYModalidad(String fecha, String modalidad) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(fecha);
+        return this.periodoRepository.findByFechaInicioAndNivel(date, modalidad);
     }
 
 }

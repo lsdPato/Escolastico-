@@ -73,7 +73,7 @@ public class UsuarioResource {
 
 
     }
-    @PutMapping(path = "/loggin")
+    @PutMapping(path = "/login")
     public ResponseEntity<Usuario> autenticarUsuario(@RequestParam("email") String email , @RequestParam("clave") String clave) throws UnknownHostException {
         return ResponseEntity.ok( this.usuarioService.autenticarUsuario(email,clave));
 

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario;
 import ec.edu.espe.arquitectura.escolastico.seguridad.service.UsuarioService;
 
+import java.net.UnknownHostException;
 import java.util.List;
 
 @RestController
@@ -69,6 +70,12 @@ public class UsuarioResource {
             e.printStackTrace();
             return ResponseEntity.badRequest().build();
         }
+
+
+    }
+    @PutMapping
+    public ResponseEntity<Usuario> autenticarUsuario(@RequestParam("email") String email , @RequestParam("clave") String clave) throws UnknownHostException {
+        return ResponseEntity.ok( this.usuarioService.autenticarUsuario(email,clave));
 
     }
 }

@@ -53,7 +53,7 @@ public class Usuario implements Serializable {
     @Version
     private Integer version;
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.EAGER)
     private List<UsuarioPerfil> usuarioPerfiles;
 
     public Usuario() {

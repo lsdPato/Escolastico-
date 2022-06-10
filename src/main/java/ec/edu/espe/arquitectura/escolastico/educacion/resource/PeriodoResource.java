@@ -29,8 +29,8 @@ public class PeriodoResource {
     }
 
     @GetMapping(path = "/buscar/modalidadfecha")
-    public ResponseEntity<List<Periodo>> listarPorFechaInicialYModalidad(@RequestBody BusquedaPeriodosDto busqueda) throws ParseException {
-        return ResponseEntity.ok(this.service.listarPorFechaInicialYModalidad(busqueda.getFecha(), busqueda.getModalidad()));
+    public ResponseEntity<List<Periodo>> listarPorFechaInicialYModalidad(@RequestParam("fecha") String fecha, @RequestParam("modalidad") String modalidad) throws ParseException {
+        return ResponseEntity.ok(this.service.listarPorFechaInicialYModalidad(fecha, modalidad));
     }
 
     @PostMapping

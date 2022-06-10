@@ -74,15 +74,12 @@ public class UsuarioService {
     }
 
     public Usuario crear(Usuario usuario) {
-        UsuarioPerfil usuarioPerfil = new UsuarioPerfil();
         String clave = RandomStringUtils.randomAlphabetic(8);
-        System.out.printf(clave);
+        System.out.println(clave);
         usuario.setClave(DigestUtils.sha256Hex(clave));
         usuario.setFechaCreacion(new Date());
 
         this.usuarioRepository.save(usuario);
-        this.usuarioPerfilRepository.saveAll(usuario.getUsuarioPerfiles());
-
         return usuario;
     }
 

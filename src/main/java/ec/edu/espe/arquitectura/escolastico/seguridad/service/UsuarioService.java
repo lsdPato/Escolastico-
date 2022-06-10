@@ -7,6 +7,7 @@ import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.exception.UsuarioNoEncontradoException;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Modulo;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario;
+import ec.edu.espe.arquitectura.escolastico.seguridad.model.UsuarioPerfil;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class UsuarioService {
 
     public Usuario buscarPorMail(String mail) {
         Usuario usuario = this.usuarioRepository.findByMail(mail);
-        if (usuario == null){
+        if (usuario == null) {
             throw new UsuarioNoEncontradoException("Usuario no encontrado");
         }
         return usuario;
@@ -65,11 +66,15 @@ public class UsuarioService {
     }
 
     public Usuario crear(Usuario usuario) {
+        UsuarioPerfil usuarioPerfil = new UsuarioPerfil();
         String clave = RandomStringUtils.randomAlphabetic(8);
+        System.out.printf(clave);
         usuario.setClave(DigestUtils.sha256Hex(clave));
         usuario.setFechaCreacion(new Date());
+
         this.usuarioRepository.save(usuario);
         this.usuarioPerfilRepository.saveAll(usuario.getUsuarioPerfiles());
+
         return usuario;
     }
 
@@ -79,6 +84,7 @@ public class UsuarioService {
             throw new CambioClaveException("No existe el usuario para el codigo o correo provisto");
         }
         claveAntigua = DigestUtils.sha256Hex(claveAntigua);
+        usuario.getClave();
         if (!usuario.getClave().equals(claveAntigua)) {
             throw new CambioClaveException("La clave antigua no coincide");
         }

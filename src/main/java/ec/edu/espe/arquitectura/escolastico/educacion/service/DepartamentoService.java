@@ -4,6 +4,7 @@ import ec.edu.espe.arquitectura.escolastico.educacion.dao.DepartamentoRepository
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Departamento;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,13 +27,20 @@ public class DepartamentoService {
     }
 
     public void crear(Departamento departamento){
+        this.departamentoRepository.save(departamento);
+    }
+
+    public void modificar(Departamento departamento){
 
         Departamento departamentoBd = this.obtenerPorCodigo(departamento.getCodDepartamento());
         departamentoBd.setNombre(departamento.getNombre());
         departamentoBd.setDescripcion(departamento.getDescripcion());
         departamentoBd.setSiglas(departamento.getSiglas());
+        this.departamentoRepository.save(departamentoBd);
+    }
 
-
+    public List<Departamento> listarDepartamentos(){
+        return this.departamentoRepository.findAll();
     }
 
 

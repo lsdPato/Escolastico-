@@ -88,9 +88,9 @@ public class UsuarioService {
     }
 
     public void modificar(Usuario usuario) {
-        Usuario usuarioBd = this.buscarPorCodigo(usuario.getCodUsuario());
-        usuarioBd.setNombre(usuarioBd.getNombre());
-        usuarioBd.setEstado(usuarioBd.getEstado());
+        Usuario usuarioBd = this.buscarPorCodigoOMail(usuario.getMail());
+        usuarioBd.setNombre(usuario.getNombre());
+        usuarioBd.setEstado(usuario.getEstado());
         this.usuarioRepository.save(usuarioBd);
     }
 

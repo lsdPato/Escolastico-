@@ -1,6 +1,8 @@
 
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -22,6 +24,7 @@ public class Materia implements Serializable {
     private BigDecimal horas;
     @Column(name = "ponderacion", nullable = false, precision = 5, scale = 2)
     private BigDecimal ponderacion;
+    //@JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
     private List<Nrc> nrcs;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")

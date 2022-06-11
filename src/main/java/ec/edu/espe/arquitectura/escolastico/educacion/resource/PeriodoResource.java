@@ -24,8 +24,8 @@ public class PeriodoResource {
     }
 
     @GetMapping(path = "/buscar/modalidad")
-    public ResponseEntity<List<Periodo>> getPeriodoModalidad(@RequestBody BusquedaPeriodosDto busqueda){
-        return ResponseEntity.ok(this.service.listarPorModalidad(busqueda.getModalidad()));
+    public ResponseEntity<List<Periodo>> getPeriodoModalidad(@RequestParam("modalidad") String modalidad){
+        return ResponseEntity.ok(this.service.listarPorModalidad(modalidad));
     }
 
     @GetMapping(path = "/buscar/modalidadfecha")

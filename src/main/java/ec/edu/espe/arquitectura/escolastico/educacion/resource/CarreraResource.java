@@ -3,6 +3,7 @@ package ec.edu.espe.arquitectura.escolastico.educacion.resource;
 import ec.edu.espe.arquitectura.escolastico.educacion.dto.BusquedaCarrerasDto;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Carrera;
 import ec.edu.espe.arquitectura.escolastico.educacion.service.CarreraService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,23 +20,23 @@ public class CarreraResource {
     }
 
     @GetMapping(path = "/buscar/nombre")
-    public ResponseEntity<List<Carrera>> getPorNombre(@RequestBody BusquedaCarrerasDto busqueda){
-        return ResponseEntity.ok(this.service.obtenerPorNombre(busqueda.getNombre()));
+    public ResponseEntity<List<Carrera>> getPorNombre(@RequestParam("nombre") String nombre){
+        return ResponseEntity.ok(this.service.obtenerPorNombre(nombre));
     }
 
     @GetMapping(path = "/buscar/departamento")
-    public ResponseEntity<List<Carrera>> listarPorDepartamento(@RequestBody BusquedaCarrerasDto busqueda){
-        return ResponseEntity.ok(this.service.listarPorDepartamento(busqueda.getDepartamento()));
+    public ResponseEntity<List<Carrera>> listarPorDepartamento(@RequestParam("departamento") Integer departamento){
+        return ResponseEntity.ok(this.service.listarPorDepartamento(departamento));
     }
 
     @GetMapping(path = "/buscar/modalidad")
-    public ResponseEntity<List<Carrera>> listarPorModalidad(@RequestBody BusquedaCarrerasDto busqueda){
-        return ResponseEntity.ok(this.service.listarPorModalidad(busqueda.getModalidad()));
+    public ResponseEntity<List<Carrera>> listarPorModalidad(@RequestParam("modalidad") String modalidad){
+        return ResponseEntity.ok(this.service.listarPorModalidad(modalidad));
     }
 
     @GetMapping(path = "/buscar/nivel")
-    public ResponseEntity<List<Carrera>> listarPorNivel(@RequestBody BusquedaCarrerasDto busqueda){
-        return ResponseEntity.ok(this.service.listarPorNivel(busqueda.getNivel()));
+    public ResponseEntity<List<Carrera>> listarPorNivel(@RequestParam("nivel") String nivel){
+        return ResponseEntity.ok(this.service.listarPorNivel(nivel));
     }
 
     @PostMapping

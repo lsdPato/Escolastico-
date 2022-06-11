@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
-    List<Carrera> findByNombreOrderByNombre(String nombre);
+    List<Carrera> findByNombreLikeOrderByNombre(String nombrePattern);
 
     List<Carrera> findByModalidadOrderByModalidad(String modalidad);
 

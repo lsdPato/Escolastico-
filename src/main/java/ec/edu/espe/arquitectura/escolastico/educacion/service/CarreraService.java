@@ -15,8 +15,8 @@ public class CarreraService {
         this.carreraRepository = carreraRepository;
     }
 
-    public List<Carrera> obtenerPorNombre(String nombre){
-        return this.carreraRepository.findByNombreOrderByNombre(nombre);
+    public List<Carrera> obtenerPorNombre(String nombrePattern){
+        return this.carreraRepository.findByNombreLikeOrderByNombre("%" + nombrePattern + "%");
     }
 
     public Carrera obtenerPorCodigo(Integer codigo){

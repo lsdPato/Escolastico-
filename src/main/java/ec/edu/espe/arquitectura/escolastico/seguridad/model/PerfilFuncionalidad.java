@@ -21,6 +21,7 @@ public class PerfilFuncionalidad implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
+    @Version
     private Integer version;
     @JoinColumn(name = "cod_funcionalidad", referencedColumnName = "cod_funcionalidad", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)

@@ -20,9 +20,19 @@ public class DepartamentoResource {
     }
 
 
-    @GetMapping
+    @GetMapping(path = "/buscar/todos")
     public ResponseEntity<List<Departamento>> getDepartamentos(){
         return ResponseEntity.ok(this.departamentoService.listarDepartamentos());
+    }
+
+    @GetMapping(path = "/buscar/nombre")
+    public ResponseEntity<List<Departamento>> getPorNombre(String nombrePattern){
+        return ResponseEntity.ok(this.departamentoService.listarporNombre(nombrePattern));
+    }
+
+    @GetMapping(path = "/buscar/siglas")
+    public ResponseEntity<List<Departamento>> getPorSiglas(String siglas){
+        return ResponseEntity.ok(this.departamentoService.listarporSiglas(siglas));
     }
 
     @PostMapping

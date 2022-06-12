@@ -1,6 +1,5 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.resource;
 
-import ec.edu.espe.arquitectura.escolastico.educacion.dto.BusquedaCarrerasDto;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Carrera;
 import ec.edu.espe.arquitectura.escolastico.educacion.service.CarreraService;
 import org.springframework.data.repository.query.Param;

@@ -1,6 +1,5 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.resource;
 
-import ec.edu.espe.arquitectura.escolastico.educacion.dto.BusquedaPeriodosDto;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Periodo;
 import ec.edu.espe.arquitectura.escolastico.educacion.service.PeriodoService;
 import ec.edu.espe.arquitectura.escolastico.seguridad.service.ModuloService;

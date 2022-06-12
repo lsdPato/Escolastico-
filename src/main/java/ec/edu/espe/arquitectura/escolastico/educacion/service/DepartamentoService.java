@@ -43,6 +43,13 @@ public class DepartamentoService {
         return this.departamentoRepository.findAll();
     }
 
+    public List<Departamento> listarporNombre(String nombrePattern){
+        return this.departamentoRepository.findByNombreLikeOrderByNombre(nombrePattern);
+    }
+
+    public List<Departamento> listarporSiglas(String siglas){
+        return this.departamentoRepository.findBySiglas(siglas);
+    }
 
 }
 

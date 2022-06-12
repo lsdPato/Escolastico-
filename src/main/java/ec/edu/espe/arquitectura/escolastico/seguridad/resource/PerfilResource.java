@@ -1,8 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.resource;
 
-import ec.edu.espe.arquitectura.escolastico.seguridad.model.Modulo;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Perfil;
-import ec.edu.espe.arquitectura.escolastico.seguridad.service.PerfilFuncionalidadService;
 import ec.edu.espe.arquitectura.escolastico.seguridad.service.PerfilService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -40,6 +40,7 @@ public class MateriaService {
     }
 
     public List<Materia> listarMaterias(String nombrePattern){
+        nombrePattern = String.format("%%%s%%", nombrePattern);
         return  this.materiaRepository.findByNombreLikeOrderByNombre(nombrePattern);
     }
 }

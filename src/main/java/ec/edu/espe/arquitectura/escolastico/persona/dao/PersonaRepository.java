@@ -19,7 +19,7 @@ public interface PersonaRepository extends JpaRepository<Persona, Integer> {
 
     Optional<Persona> findByEmailOrderByEmail(String email);
 
-
+    List<Persona> findByEstado(String estado);
 
     Persona findByEmailAlterno(String emailAlterno);
 

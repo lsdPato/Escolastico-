@@ -17,7 +17,7 @@ public class UbicacionGeografica implements Serializable {
     private Integer codUbicacionGeoInt;
     @Column(name = "cod_pais", nullable = false)
     private String codPais;
-    @Column(name = "cod_nivel", nullable = false)
+    @Column(name = "nivel", nullable = false)
     private Integer nivel;
     @Column(name = "cod_ubicacion_geografica", nullable = false)
     private String codUbicacionGeografica;

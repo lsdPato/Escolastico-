@@ -1,9 +1,11 @@
 
 package ec.edu.espe.arquitectura.escolastico.persona.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Matricula;
 import ec.edu.espe.arquitectura.escolastico.general.model.Pais;
 import ec.edu.espe.arquitectura.escolastico.general.model.UbicacionGeografica;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,6 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "per_persona")
+@Proxy
 public class Persona implements Serializable {
     private static final long serialVersionUID = -1471250292976955422L;
 
@@ -70,30 +73,41 @@ public class Persona implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
+    @Version
     private Integer version;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<DireccionPersona> direcciones;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<Matricula> matriculas;
+    @JsonIgnore
     @JoinColumn(name = "cod_pais_nacimiento", referencedColumnName = "cod_pais")
     @ManyToOne
     private Pais paisNacimiento;
-    @JoinColumn(name = "nacionalidad", referencedColumnName = "cod_pais", nullable = false)
-    @ManyToOne(optional = false)
+    @JsonIgnore
+    @JoinColumn(name = "nacionalidad", referencedColumnName = "cod_pais")
+    @ManyToOne
     private Pais nacionalidad;
-    @JoinColumn(name = "lugar_nacimiento", referencedColumnName = "cod_ubicacion_geo_int", nullable = false)
-    @ManyToOne(optional = false)
+    @JsonIgnore
+    @JoinColumn(name = "lugar_nacimiento", referencedColumnName = "cod_ubicacion_geo_int")
+    @ManyToOne
     private UbicacionGeografica lugarNacimiento;
+    @JsonIgnore
     @JoinColumn(name = "cod_tipo_discapacidad", referencedColumnName = "cod_tipo_discapacidad")
     @ManyToOne
     private TipoDiscapacidad tipoDiscapacidad;
+    @JsonIgnore
     @JoinColumn(name = "cod_tipo_persona", referencedColumnName = "cod_tipo_persona")
     @ManyToOne
     private TipoPersona tipoPersona;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<DocumentoPersona> documentos;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<FamiliarPersona> familiares;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<HistTipoPersona> historialesTipoPersona;
 

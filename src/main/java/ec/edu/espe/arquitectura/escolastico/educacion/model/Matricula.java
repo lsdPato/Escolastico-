@@ -1,6 +1,8 @@
 
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import ec.edu.espe.arquitectura.escolastico.persona.model.Persona;
 
 import java.io.Serializable;
@@ -9,8 +11,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "edu_matricula", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"cod_periodo"})})
+@Table(name = "edu_matricula")
 
 public class Matricula implements Serializable {
 
@@ -38,6 +39,7 @@ public class Matricula implements Serializable {
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Persona persona;
+    @JsonBackReference(value = "matriculaNrc")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "matricula")
     private List<MatriculaNrc> matriculaNrc;
 

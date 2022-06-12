@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public interface MatriculaRepository extends JpaRepository<Matricula, MatriculaPK> {
     List<Matricula> findByTipoOrderByTipo(String tipo);
@@ -17,5 +18,5 @@ public interface MatriculaRepository extends JpaRepository<Matricula, MatriculaP
 
     List<Matricula> findByCodPeriodoAndCodCarrera(Integer codPeriodo, Integer CodCarrera);
 
-    List<Matricula> findByCodPeriodoAndPkCodPersona(Integer codPeriodo, Integer codPersona);
+    Optional<Matricula> findByCodPeriodoAndPkCodPersona(Integer codPeriodo, Integer codPersona);
 }

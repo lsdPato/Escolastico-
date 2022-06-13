@@ -9,6 +9,6 @@ public class NrcHorarioDto {
     private Integer nrc;
     private Integer aula;
     private String dia;
-    private Date horaInicio;
-    private Date horaFin;
+    private String horaInicio;
+    private String horaFin;
 }

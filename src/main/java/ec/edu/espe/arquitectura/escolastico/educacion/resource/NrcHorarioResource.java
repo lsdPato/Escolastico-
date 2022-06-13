@@ -31,6 +31,7 @@ public class NrcHorarioResource {
                     nrcHorarioDto.getHoraInicio(), nrcHorarioDto.getHoraFin());
             return ResponseEntity.ok().build();
         }catch (Exception e){
+            e.printStackTrace();
             return ResponseEntity.badRequest().build();
         }
     }

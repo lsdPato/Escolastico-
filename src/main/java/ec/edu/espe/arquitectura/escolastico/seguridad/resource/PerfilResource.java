@@ -1,5 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.resource;
 
+import ec.edu.espe.arquitectura.escolastico.seguridad.dto.PerfilUsuarioDto;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Perfil;
 import ec.edu.espe.arquitectura.escolastico.seguridad.service.PerfilService;
 import lombok.RequiredArgsConstructor;
@@ -42,9 +43,9 @@ public class PerfilResource {
         }
     }
     @PostMapping(path = "asignarPerfil")
-    public ResponseEntity<String> asignar(@RequestParam("codUsuario")  String usuario, @RequestParam("email")String email, @RequestParam("codPerfil")String codPerfil) {
+    public ResponseEntity<String> asignar(@RequestBody PerfilUsuarioDto perfilUsuarioDto) {
         try {
-            this.service.asignarPerfil(usuario,email,codPerfil);
+            this.service.asignarPerfil(perfilUsuarioDto.getUsuario(), perfilUsuarioDto.getEmail(), perfilUsuarioDto.getPerfil());
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             e.printStackTrace();

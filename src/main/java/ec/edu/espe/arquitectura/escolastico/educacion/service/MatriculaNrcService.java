@@ -85,7 +85,12 @@ public class MatriculaNrcService {
                 getCodMateria(), nuevaMatriculaNrcPK.getCodDepartamento()).
                 orElseThrow(() -> new NoEncontradoException("No Existe la materia"));
 
-        Carrera carreraOpt = this.carreraRepository.findById(matricula.getCodCarrera())
+        Matricula recuperarRegistroMatricula = this.matriculaRepository.findByPkCodMatriculaAndPkCodPersona(
+                matricula.getPk().getCodMatricula(), matricula.getPk().getCodPersona()).
+                orElseThrow(()-> new NoEncontradoException("No existe el registro de matricula"));
+
+
+        Carrera carreraOpt = this.carreraRepository.findById(recuperarRegistroMatricula.getCodCarrera())
                 .orElseThrow(() -> new NoEncontradoException("No existe la carrera"));
 
         BigDecimal costoNrc = this.calcularCostoNrc(materiaOpt.getCreditos(), carreraOpt.getPrecioCredito());
@@ -106,6 +111,7 @@ public class MatriculaNrcService {
         registroMatriculaNrc.setEstado(EstadosMatriculaEnum.ACTIVO.getValor());
         registroMatriculaNrc.setNumero(numeroMatricula);
         registroMatriculaNrc.setCosto(costoNrc);
+        this.matriculaNrcRepository.save(registroMatriculaNrc);
 
     }
 

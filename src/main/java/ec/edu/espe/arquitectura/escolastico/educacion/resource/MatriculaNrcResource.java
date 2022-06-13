@@ -1,5 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.resource;
 
+import ec.edu.espe.arquitectura.escolastico.educacion.dto.MatriculaNrcDto;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Matricula;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.MatriculaNrc;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.MatriculaNrcPK;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/matriculaNrc")
+@RequestMapping(path = "/matriculanrc")
 public class MatriculaNrcResource {
 
     private final MatriculaNrcService service;
@@ -27,9 +28,9 @@ public class MatriculaNrcResource {
     }
 
     @PostMapping
-    public ResponseEntity<String> crearMatriculaANrc(@RequestBody Matricula matricula, Nrc nrc){
+    public ResponseEntity<String> crearMatriculaANrc(@RequestBody MatriculaNrcDto matriculaNrcDto){
         try{
-            this.service.generarMatriculaANrc(matricula,nrc);
+            this.service.generarMatriculaANrc(matriculaNrcDto.getMatricula(),matriculaNrcDto.getNrc());
             return ResponseEntity.ok().build();
         }catch (Exception e){
             e.printStackTrace();

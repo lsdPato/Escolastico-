@@ -19,4 +19,6 @@ public interface MatriculaRepository extends JpaRepository<Matricula, MatriculaP
     List<Matricula> findByCodPeriodoAndCodCarrera(Integer codPeriodo, Integer CodCarrera);
 
     Optional<Matricula> findByCodPeriodoAndPkCodPersona(Integer codPeriodo, Integer codPersona);
+
+    Optional<Matricula> findByPkCodMatriculaAndPkCodPersona(String codMatricula, Integer codPersona);
 }

@@ -23,7 +23,7 @@ public class MatriculaResource {
     @PostMapping
     public ResponseEntity<String> crearMateria(@RequestBody Matricula matricula){
         try{
-            this.service.crearMateria(matricula);
+            this.service.crearMatricula(matricula);
             return ResponseEntity.ok().build();
         }catch (Exception e){
             e.printStackTrace();

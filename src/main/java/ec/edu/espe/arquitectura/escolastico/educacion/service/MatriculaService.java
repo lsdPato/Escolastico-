@@ -3,6 +3,7 @@ package ec.edu.espe.arquitectura.escolastico.educacion.service;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.MatriculaRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Materia;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Matricula;
+import ec.edu.espe.arquitectura.escolastico.persona.model.TipoPersona;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +26,13 @@ public class MatriculaService {
             return null;
         }
     }
-    public void crearMateria(Matricula matricula) {
+    public void crearMatricula(Matricula matricula) {
+
+
+        if(!matricula.getTipo().equals(1)){
+
+        }
+
         this.matriculaRepository.save(matricula);
     }
     public List<Matricula> listarMatriculas(Integer codPersona){

@@ -14,7 +14,7 @@ public interface MatriculaNrcRepository extends JpaRepository<MatriculaNrc, Matr
 
     List<MatriculaNrc> findByPkCodPersonaAndEstado(Integer codPersona, String estado);
 
-    Optional<MatriculaNrc> findByPkCodPersonaAndPkCodMateriaAndPkCodPeriodo(Integer codPersona, Integer codMatricula, Integer codPeriodo);
+    Optional<MatriculaNrc> findByPkCodPersonaAndPkCodMateriaAndPkCodPeriodo(Integer codPersona, Integer codMateria, Integer codPeriodo);
 
     List<MatriculaNrc> findByPkCodPersonaAndPkCodMateria(Integer codPersona, Integer codMateria);
 

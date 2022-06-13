@@ -1,6 +1,8 @@
 
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -17,11 +19,14 @@ public class Prerrequisito implements Serializable {
     private String tipo;
     @Column(name = "cod_materia", nullable = false, insertable = false, updatable = false)
     private Integer codMateria;
+    @JsonBackReference(value = "prerrequisito_materia")
     @JoinColumns({
             @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
             @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
     @ManyToOne(optional = false)
     private Materia materia;
+
+    @JsonBackReference(value = "prerrequisito")
     @JoinColumns({
             @JoinColumn(name = "cod_materia_prerequisito", referencedColumnName = "cod_materia", nullable = false),
             @JoinColumn(name = "edu_cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})

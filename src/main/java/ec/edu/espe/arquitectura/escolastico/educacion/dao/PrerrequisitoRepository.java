@@ -12,5 +12,5 @@ public interface PrerrequisitoRepository extends JpaRepository<Prerrequisito, In
     List<Prerrequisito> findByCodMateria(Integer codMateria);
 
     List<Prerrequisito> findByTipoAndCodMateria(String tipo, Integer codMateria);
-    Optional<Prerrequisito> findTopByOrderByCodPrerrequisito();
+    Optional<Prerrequisito> findTopByOrderByCodPrerrequisitoDesc();
 }

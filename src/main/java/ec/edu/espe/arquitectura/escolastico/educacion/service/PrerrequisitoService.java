@@ -12,14 +12,14 @@ import java.util.Optional;
 @Service
 public class PrerrequisitoService {
 
-    private final PrerrequisitoRepository requisitoRepository;
+    private final PrerrequisitoRepository rrequisitoRepository;
 
-    public PrerrequisitoService(PrerrequisitoRepository requisitoRepository) {
-        this.requisitoRepository = requisitoRepository;
+    public PrerrequisitoService(PrerrequisitoRepository rrequisitoRepository) {
+        this.rrequisitoRepository = rrequisitoRepository;
     }
 
     public void generarPrerrequisito(Materia materia, Materia materiaPrerrequisito){
-        Optional<Prerrequisito> prerrequisito = this.requisitoRepository.findTopByOrderByCodPrerrequisito();
+        Optional<Prerrequisito> prerrequisito = this.rrequisitoRepository.findTopByOrderByCodPrerrequisitoDesc();
         Prerrequisito nuevoPrerrequisito = new Prerrequisito();
         Integer codNuevoPrerrequisito = 0;
         if (prerrequisito.isEmpty()){
@@ -32,20 +32,30 @@ public class PrerrequisitoService {
         nuevoPrerrequisito.setCodMateria(materia.getPk().getCodMateria());
         nuevoPrerrequisito.setPrerequisito(materiaPrerrequisito);
         nuevoPrerrequisito.setTipo(TipoPrerrequisitoEnum.OBLIGATORIO.getValor());
-        this.requisitoRepository.save(nuevoPrerrequisito);
+        this.rrequisitoRepository.save(nuevoPrerrequisito);
     }
 
     public void cambiarObligatoriedad(Prerrequisito prerrequisito){
-        Optional<Prerrequisito> prerrequisitoDb = this.requisitoRepository.findById(prerrequisito.getCodPrerrequisito());
+        Optional<Prerrequisito> prerrequisitoDb = this.rrequisitoRepository.findById(prerrequisito.getCodPrerrequisito());
         if (prerrequisitoDb.get().getTipo().equals("OBL")){
             prerrequisitoDb.get().setTipo(TipoPrerrequisitoEnum.OPCIONAL.getValor());
         }else if (prerrequisitoDb.get().getTipo().equals("OPC")){
             prerrequisitoDb.get().setTipo(TipoPrerrequisitoEnum.OBLIGATORIO.getValor());
         }
-        this.requisitoRepository.save(prerrequisitoDb.get());
+        this.rrequisitoRepository.save(prerrequisitoDb.get());
     }
 
     public List<Prerrequisito> listarPrerrequisitos(Materia materia){
-        return this.requisitoRepository.findByCodMateria(materia.getPk().getCodMateria());
+        return this.rrequisitoRepository.findByCodMateria(materia.getPk().getCodMateria());
+    }
+
+    public boolean validarPrerrequisitoExistente(Prerrequisito prerrequisito){
+        List<Prerrequisito> prerrequisitosComprobar = this.rrequisitoRepository.findByCodMateria(prerrequisito.getCodMateria());
+        for (Prerrequisito prerrequisitoL: prerrequisitosComprobar) {
+            if(prerrequisitoL.getCodPrerrequisito().equals(prerrequisito.getCodPrerrequisito())){
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -20,7 +20,7 @@ public class PrerrequisitoResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<Prerrequisito>> getPrerrequisitosMateria(Materia materia){
+    public ResponseEntity<List<Prerrequisito>> getPrerrequisitosMateria(@RequestBody Materia materia){
         return ResponseEntity.ok(this.service.listarPrerrequisitos(materia));
     }
 

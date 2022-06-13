@@ -10,7 +10,7 @@
     <class>ec.edu.espe.arquitectura.escolastico.educacion.model.MallaCarrera</class>
     <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Carrera</class>
     <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Materia</class>
-    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Prerequisito</class>
+    <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Prerrequisito</class>
     <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Departamento</class>
     <class>ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc</class>
     <class>ec.edu.espe.arquitectura.escolastico.general.model.PaisEstructura</class>

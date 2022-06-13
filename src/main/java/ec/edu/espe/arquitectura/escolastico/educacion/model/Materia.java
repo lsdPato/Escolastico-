@@ -2,7 +2,6 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -34,7 +33,7 @@ public class Materia implements Serializable {
     private List<MallaCarrera> carreras;
     @JsonBackReference(value = "materia_prerrequisito")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "prerequisito")
-    private List<Prerequisito> prerequisitos;
+    private List<Prerrequisito> prerrequisitos;
 
     public Materia() {
     }
@@ -103,12 +102,12 @@ public class Materia implements Serializable {
         this.carreras = mallaCarreraList;
     }
 
-    public List<Prerequisito> getPrerequisitos() {
-        return prerequisitos;
+    public List<Prerrequisito> getPrerequisitos() {
+        return prerrequisitos;
     }
 
-    public void setPrerequisitos(List<Prerequisito> prerequisitoList1) {
-        this.prerequisitos = prerequisitoList1;
+    public void setPrerequisitos(List<Prerrequisito> prerrequisitos) {
+        this.prerrequisitos = prerrequisitos;
     }
 
     @Override

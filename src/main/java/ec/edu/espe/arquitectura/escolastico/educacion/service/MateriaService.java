@@ -17,8 +17,8 @@ public class MateriaService {
         this.materiaRepository = materiaRepository;
     }
 
-    public Materia obtenerPorCodigo(Integer codMateria, Integer codPeriodo){
-        Optional<Materia> materiaOpt = this.materiaRepository.findByPkCodMateriaAndPkCodDepartamento(codMateria,codPeriodo);
+    public Materia obtenerPorCodigo(Integer codMateria, Integer codDepartamento){
+        Optional<Materia> materiaOpt = this.materiaRepository.findByPkCodMateriaAndPkCodDepartamento(codMateria,codDepartamento);
         if (materiaOpt.isPresent()) {
             return materiaOpt.get();
         } else {

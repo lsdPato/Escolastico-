@@ -7,12 +7,12 @@ import java.io.Serializable;
 @Entity
 @Table(name = "edu_prerequisito")
 
-public class Prerequisito implements Serializable {
+public class Prerrequisito implements Serializable {
 
     private static final long serialVersionUID = 62945L;
     @Id
     @Column(name = "cod_prerequisito", nullable = false)
-    private Integer codPrerequisito;
+    private Integer codPrerrequisito;
     @Column(name = "tipo", nullable = false, length = 3)
     private String tipo;
     @Column(name = "cod_materia", nullable = false, insertable = false, updatable = false)
@@ -28,19 +28,19 @@ public class Prerequisito implements Serializable {
     @ManyToOne(optional = false)
     private Materia prerequisito;
 
-    public Prerequisito() {
+    public Prerrequisito() {
     }
 
-    public Prerequisito(Integer codPrerequisito) {
-        this.codPrerequisito = codPrerequisito;
+    public Prerrequisito(Integer codPrerrequisito) {
+        this.codPrerrequisito = codPrerrequisito;
     }
 
-    public Integer getCodPrerequisito() {
-        return codPrerequisito;
+    public Integer getCodPrerrequisito() {
+        return codPrerrequisito;
     }
 
-    public void setCodPrerequisito(Integer codPrerequisito) {
-        this.codPrerequisito = codPrerequisito;
+    public void setCodPrerrequisito(Integer codPrerequisito) {
+        this.codPrerrequisito = codPrerequisito;
     }
 
     public String getTipo() {
@@ -78,18 +78,18 @@ public class Prerequisito implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (codPrerequisito != null ? codPrerequisito.hashCode() : 0);
+        hash += (codPrerrequisito != null ? codPrerrequisito.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
 
-        if (!(object instanceof Prerequisito)) {
+        if (!(object instanceof Prerrequisito)) {
             return false;
         }
-        Prerequisito other = (Prerequisito) object;
-        if ((this.codPrerequisito == null && other.codPrerequisito != null) || (this.codPrerequisito != null && !this.codPrerequisito.equals(other.codPrerequisito))) {
+        Prerrequisito other = (Prerrequisito) object;
+        if ((this.codPrerrequisito == null && other.codPrerrequisito != null) || (this.codPrerrequisito != null && !this.codPrerrequisito.equals(other.codPrerrequisito))) {
             return false;
         }
         return true;
@@ -97,7 +97,7 @@ public class Prerequisito implements Serializable {
 
     @Override
     public String toString() {
-        return "[ codPrerequisito=" + codPrerequisito + " ]";
+        return "[ codPrerequisito=" + codPrerrequisito + " ]";
     }
 
 }

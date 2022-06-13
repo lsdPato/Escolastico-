@@ -3,6 +3,7 @@ package ec.edu.espe.arquitectura.escolastico.educacion.service;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.CalificacionRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.MatriculaNrcRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Calificacion;
+import ec.edu.espe.arquitectura.escolastico.educacion.model.Departamento;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Matricula;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc;
 import ec.edu.espe.arquitectura.escolastico.seguridad.EstadosEnum;
@@ -37,6 +38,13 @@ public class CalificaionService {
     public Optional<Calificacion> listarCalificaciones(Integer nrc, Integer codPersona) {
         return this.calificacionRepository.findByPkCodNrcAndPkCodPersona(nrc, codPersona);
     }
+    public List<Calificacion> listarCalificaionPorPeriodo(Integer codPersona, Integer codPeriodo){
+        return this.calificacionRepository.findByPkCodPersonaAndCodPeriodo(codPersona,codPeriodo);
+    }
+    public List<Calificacion> listarCalificaionPorPersonas(Integer codPersona){
+        return this.calificacionRepository.findByPkCodPersona(codPersona);
+    }
+
     public void modificar(Calificacion calificaion) {
         Calificacion calificacionDB = this.obtenerPorCodigo(calificaion.getPk().getCodNrc(),calificaion.getPk().getCodPersona());
         calificacionDB.setNota1(calificaion.getNota1());

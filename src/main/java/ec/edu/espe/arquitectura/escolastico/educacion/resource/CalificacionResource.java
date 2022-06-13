@@ -35,6 +35,14 @@ public class CalificacionResource {
     public ResponseEntity<Optional<Calificacion>> getCalificaciones(@RequestParam("nrc") Integer nrc,@RequestParam("codPersona") Integer codPersona) {
         return ResponseEntity.ok(this.service.listarCalificaciones(nrc, codPersona));
     }
+    @GetMapping(path = "/periodo")
+    public ResponseEntity<List<Calificacion>> getPorPeriodo(@RequestParam("codPersona") Integer codPersona,@RequestParam("codPeriodo") Integer codPeriodo){
+        return ResponseEntity.ok(this.service.listarCalificaionPorPeriodo(codPersona,codPeriodo));
+    }
+    @GetMapping(path = "/persona")
+    public ResponseEntity<List<Calificacion>> getPorPeriodo(@RequestParam("codPersona") Integer codPersona){
+        return ResponseEntity.ok(this.service.listarCalificaionPorPersonas(codPersona));
+    }
 
     @PutMapping
     public ResponseEntity<Calificacion> modificar(@RequestBody Calificacion calificacion) {

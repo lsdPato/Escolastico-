@@ -4,6 +4,7 @@ package ec.edu.espe.arquitectura.escolastico.educacion.service;
 import ec.edu.espe.arquitectura.escolastico.educacion.EstadosMatriculaEnum;
 import ec.edu.espe.arquitectura.escolastico.educacion.TipoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.*;
+import ec.edu.espe.arquitectura.escolastico.educacion.exception.ImpedimentoMatriculaNrcException;
 import ec.edu.espe.arquitectura.escolastico.educacion.exception.MatriculaNrcExisteException;
 import ec.edu.espe.arquitectura.escolastico.educacion.exception.NoExisteCupoException;
 import ec.edu.espe.arquitectura.escolastico.educacion.exception.PersonaNoAutorizadaException;
@@ -91,20 +92,19 @@ public class MatriculaNrcService {
 
         this.nrcService.actualizarCupos(nuevaMatriculaNrcPK.getCodNrc(), nuevaMatriculaNrcPK.getCodPeriodo());
 
-        List<MatriculaNrc> segundaTerceraMatriculaNrc = this.matriculaNrcRepository.findByPkCodPersonaAndPkCodMateria(
-                nuevaMatriculaNrcPK.getCodPersona(), nuevaMatriculaNrcPK.getCodMateria());
-
-
-        Integer contadorMatriculas = 0;
-        for (MatriculaNrc matriculaNrcListado : segundaTerceraMatriculaNrc) {
-            contadorMatriculas = contadorMatriculas + 1;
+        if(this.consultaMateriaAprobada(nuevaMatriculaNrcPK)){
+            throw new ImpedimentoMatriculaNrcException("Usted ya ha aprobado la materia");
         }
 
+        Integer numeroMatricula = this.consultaSegundaTerceraMatricula(nuevaMatriculaNrcPK);
 
+        if (numeroMatricula == 4){
+            throw new ImpedimentoMatriculaNrcException("Usted ya ha perdido 3 matrículas");
+        }
 
         MatriculaNrc registroMatriculaNrc = new MatriculaNrc(nuevaMatriculaNrcPK);
         registroMatriculaNrc.setEstado(EstadosMatriculaEnum.ACTIVO.getValor());
-        registroMatriculaNrc.setNumero(1);
+        registroMatriculaNrc.setNumero(numeroMatricula);
         registroMatriculaNrc.setCosto(costoNrc);
 
     }
@@ -125,7 +125,30 @@ public class MatriculaNrcService {
         this.matriculaNrcRepository.save(matriculaNrcDb);
     }
 
-    public void consultaMateriaAprobadaONumeroMatricula(){
+    public boolean consultaMateriaAprobada(MatriculaNrcPK matriculaNrc){
+        Optional<MatriculaNrc> consultaMatriculaNrc = this.matriculaNrcRepository.
+                findTopByPkCodPersonaAndPkCodMateriaOrderByNumeroDesc(matriculaNrc.getCodPersona(),
+                        matriculaNrc.getCodMateria());
+        if (consultaMatriculaNrc.isEmpty()){
+            return false;
+        }
+        if (consultaMatriculaNrc.get().getEstado().equals("APR")){
+            return true;
+        }else {
+            return false;
+        }
+    }
 
+    public Integer consultaSegundaTerceraMatricula(MatriculaNrcPK matriculaNrc){
+        Optional<MatriculaNrc> consultaMatriculaNrc = this.matriculaNrcRepository.
+                findTopByPkCodPersonaAndPkCodMateriaOrderByNumeroDesc(matriculaNrc.getCodPersona(),
+                        matriculaNrc.getCodMateria());
+        if (consultaMatriculaNrc.isEmpty()){
+            return 1;
+        }
+        if (consultaMatriculaNrc.get().getNumero() >= 3){
+            return 4;
+        }
+        return consultaMatriculaNrc.get().getNumero()+1;
     }
 }

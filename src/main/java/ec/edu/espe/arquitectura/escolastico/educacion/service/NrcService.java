@@ -2,7 +2,7 @@ package ec.edu.espe.arquitectura.escolastico.educacion.service;
 
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.MatriculaNrcRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.NrcRepository;
-import ec.edu.espe.arquitectura.escolastico.educacion.model.MatriculaNrc;
+import ec.edu.espe.arquitectura.escolastico.educacion.exception.NoExisteCupoException;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.NrcPK;
 import org.springframework.stereotype.Service;
@@ -46,23 +46,16 @@ public class NrcService {
         return this.nrcRespository.findByPkCodPeriodoAndPkCodMateria(codPeriodo, codMateria);
     }
 
-    public void calcularCupos(Integer codNrc) {
-        List<MatriculaNrc> nrcLista = this.matriculaNrcRepository.findByPkCodNrc(codNrc);
-        Optional<Nrc> nrc = this.nrcRespository.findByPkCodNrc(codNrc);
-        if(nrc.get().getCupoDisponible() == 0){
-            return;
+    public void actualizarCupos(Integer codNrc, Integer codPeriodo) {
+
+        Optional<Nrc> nrc = this.nrcRespository.findByPkCodNrcAndPkCodPeriodo(codNrc, codPeriodo);
+        if (nrc.get().getCupoDisponible() == 0) {
+            throw new NoExisteCupoException("No hay cupos Disponibles en este NRC");
         }
-        for (MatriculaNrc registro : nrcLista) {
-            if (!(registro == null)) {
-                nrc.get().setCupoDisponible(nrc.get().getCupoDisponible() - 1);
-                nrc.get().setCupoRegistrado(nrc.get().getCupoRegistrado() + 1);
-                this.nrcRespository.save(nrc.get());
-
-            }
-
-
-        }
+        nrc.get().setCupoDisponible(nrc.get().getCupoDisponible() - 1);
+        nrc.get().setCupoRegistrado(nrc.get().getCupoRegistrado() + 1);
+        this.nrcRespository.save(nrc.get());
     }
 
-
 }
+

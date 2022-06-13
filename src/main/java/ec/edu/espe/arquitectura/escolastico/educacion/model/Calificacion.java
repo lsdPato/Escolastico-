@@ -1,6 +1,8 @@
 
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.*;
@@ -37,6 +39,16 @@ public class Calificacion implements Serializable {
     private BigDecimal promedio;
     @Column(name = "observacion", length = 25)
     private String observacion;
+
+    @Column(name = "cod_periodo", nullable = false)
+    private Integer codPeriodo;
+
+    @Column(name = "cod_departamento")
+    private Integer codDepartamento;
+
+    @Column(name = "cod_materia")
+    private Integer codMateria;
+    @JsonBackReference
     @JoinColumns({
             @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
             @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false),
@@ -54,8 +66,8 @@ public class Calificacion implements Serializable {
         this.pk = calificacionPK;
     }
 
-    public Calificacion(String codMatricula, Integer codNrc) {
-        this.pk = new CalificacionPK(codMatricula, codNrc);
+    public Calificacion(String codMatricula,Integer codPersona,Integer codNrc) {
+        this.pk = new CalificacionPK(codMatricula, codPersona,codNrc);
     }
 
     public CalificacionPK getPk() {
@@ -168,6 +180,30 @@ public class Calificacion implements Serializable {
 
     public void setMatriculaNrc(MatriculaNrc matriculaNrc) {
         this.matriculaNrc = matriculaNrc;
+    }
+
+    public Integer getCodPeriodo() {
+        return codPeriodo;
+    }
+
+    public void setCodPeriodo(Integer codPeriodo) {
+        this.codPeriodo = codPeriodo;
+    }
+
+    public Integer getCodDepartamento() {
+        return codDepartamento;
+    }
+
+    public void setCodDepartamento(Integer codDepartamento) {
+        this.codDepartamento = codDepartamento;
+    }
+
+    public Integer getCodMateria() {
+        return codMateria;
+    }
+
+    public void setCodMateria(Integer codMateria) {
+        this.codMateria = codMateria;
     }
 
     @Override

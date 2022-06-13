@@ -9,16 +9,27 @@ public class CalificacionPK implements Serializable {
 
     @Column(name = "cod_matricula", nullable = false, length = 10)
     private String codMatricula;
+    @Column(name = "cod_persona", nullable = false)
+    private Integer codPersona;
+
     @Column(name = "cod_nrc", nullable = false)
     private Integer codNrc;
+
+
 
     public CalificacionPK() {
     }
 
-    public CalificacionPK(String codMatricula, Integer codNrc) {
+    public CalificacionPK(String codMatricula, Integer codPersona, Integer codNrc) {
         this.codMatricula = codMatricula;
+        this.codPersona = codPersona;
         this.codNrc = codNrc;
     }
+
+    public void setCodPersona(Integer codPersona) {
+        this.codPersona = codPersona;
+    }
+
 
     public String getCodMatricula() {
         return codMatricula;
@@ -34,6 +45,9 @@ public class CalificacionPK implements Serializable {
 
     public void setCodNrc(Integer codNrc) {
         this.codNrc = codNrc;
+    }
+    public Integer getCodPersona() {
+        return codPersona;
     }
 
     @Override

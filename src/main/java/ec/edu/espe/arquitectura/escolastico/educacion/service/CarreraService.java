@@ -15,6 +15,10 @@ public class CarreraService {
         this.carreraRepository = carreraRepository;
     }
 
+    public List<Carrera> listarCarreras(){
+        return this.carreraRepository.findAll();
+    }
+
     public List<Carrera> obtenerPorNombre(String nombrePattern){
         return this.carreraRepository.findByNombreLikeOrderByNombre("%" + nombrePattern + "%");
     }

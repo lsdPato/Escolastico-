@@ -32,7 +32,7 @@ public class Materia implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
     private List<MallaCarrera> carreras;
     @JsonBackReference(value = "materia_prerrequisito")
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "prerequisito")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "prerequisito", fetch = FetchType.EAGER)
     private List<Prerrequisito> prerrequisitos;
 
     public Materia() {

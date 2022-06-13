@@ -1,6 +1,8 @@
 
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -11,13 +13,20 @@ public class MallaCarrera implements Serializable {
 
     private static final long serialVersionUID = 21345L;
     @Id
+//    @GeneratedValue
     @Column(name = "cod_materiacarrera", nullable = false)
     private Integer codMateriacarrera;
     @Column(name = "nivel")
     private Integer nivel;
-    @Column(name = "cod_carrera", nullable = false, insertable = false, updatable = false)
+
+    @Column(name = "cod_carrera", nullable = false)
     private Integer codCarrera;
-    @JoinColumn(name = "cod_carrera", referencedColumnName = "cod_carrera", nullable = false)
+
+    @Column(name = "cod_materia", nullable = false, insertable = false, updatable = false)
+    private Integer codMateria;
+
+    @JsonBackReference(value = "carrera")
+    @JoinColumn(name = "cod_carrera", referencedColumnName = "cod_carrera", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Carrera carrera;
 
@@ -52,6 +61,14 @@ public class MallaCarrera implements Serializable {
 
     public Carrera getCarrera() {
         return carrera;
+    }
+
+    public Integer getCodMateria() {
+        return codMateria;
+    }
+
+    public void setCodMateria(Integer codMateria) {
+        this.codMateria = codMateria;
     }
 
     public void setCarrera(Carrera codCarrera) {

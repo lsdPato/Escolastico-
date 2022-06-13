@@ -37,7 +37,7 @@ public class Nrc implements Serializable {
     private Integer cupoRegistrado;
     @Column(name = "nombre", length = 255)
     private String nombre;
-    @Column(name = "cod_persona", nullable = false, insertable = false, updatable = false)
+    @Column(name = "cod_persona", nullable = false)
     private Integer codPersona;
     @JsonBackReference(value = "codMateria")
     @JoinColumns({@JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false), @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)})

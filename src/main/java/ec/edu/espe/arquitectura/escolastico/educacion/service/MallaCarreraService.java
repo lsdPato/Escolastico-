@@ -20,7 +20,8 @@ public class MallaCarreraService {
     private final CarreraRepository carreraRepository;
 
 
-    public MallaCarreraService(MallaCarreraRepository mallaCarreraRepository, MateriaRepository materiaRepository, CarreraRepository carreraRepository) {
+    public MallaCarreraService(MallaCarreraRepository mallaCarreraRepository, MateriaRepository materiaRepository,
+                               CarreraRepository carreraRepository) {
         this.mallaCarreraRepository = mallaCarreraRepository;
         this.materiaRepository = materiaRepository;
         this.carreraRepository = carreraRepository;
@@ -34,14 +35,16 @@ public class MallaCarreraService {
         return this.mallaCarreraRepository.findByCodCarreraAndNivel(carrera, nivel);
     }
 
-    public void asignarMateriaCarrera(Integer codMateria, Integer codCarrera, Integer nivel) throws MateriaCarreraExisteException {
+    public void asignarMateriaCarrera(Integer codMateria, Integer codCarrera, Integer nivel)
+            throws MateriaCarreraExisteException {
 
         Optional<Materia> materiaBD = this.materiaRepository.findByPkCodMateria(codMateria);
         Optional<Carrera> carreraBD = this.carreraRepository.findById(codCarrera);
         MallaCarrera mallaCarreraTmp = new MallaCarrera();
 
         if(materiaBD.isPresent() && carreraBD.isPresent()){
-            if(this.mallaCarreraRepository.findByCodCarreraAndCodMateria(carreraBD.get().getCodCarrera(), materiaBD.get().getPk().getCodMateria()).isPresent()){
+            if(this.mallaCarreraRepository.findByCodCarreraAndCodMateria(carreraBD.get().getCodCarrera(),
+                    materiaBD.get().getPk().getCodMateria()).isPresent()){
                 throw new MateriaCarreraExisteException("La Materia ya ha sido asignada a la Carrera");
             }
             Optional<MallaCarrera> mallaOpt = this.mallaCarreraRepository.findTopByOrderByCodMateriacarreraDesc();

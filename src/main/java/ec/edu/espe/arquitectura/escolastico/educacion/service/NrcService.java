@@ -1,10 +1,15 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.service;
 
+import ec.edu.espe.arquitectura.escolastico.educacion.TipoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.MatriculaNrcRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.NrcRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.exception.NoExisteCupoException;
+import ec.edu.espe.arquitectura.escolastico.educacion.exception.PersonaNoAutorizadaException;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.NrcPK;
+import ec.edu.espe.arquitectura.escolastico.persona.dao.PersonaRepository;
+import ec.edu.espe.arquitectura.escolastico.persona.model.Persona;
+import ec.edu.espe.arquitectura.escolastico.seguridad.exception.NoEncontradoException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +20,13 @@ public class NrcService {
     private final NrcRepository nrcRespository;
     private final MatriculaNrcRepository matriculaNrcRepository;
 
-    public NrcService(NrcRepository nrcRespository, MatriculaNrcRepository matriculaNrcRepository) {
+    private final PersonaRepository personaRepository;
+
+    public NrcService(NrcRepository nrcRespository, MatriculaNrcRepository matriculaNrcRepository,
+                      PersonaRepository personaRepository) {
         this.nrcRespository = nrcRespository;
         this.matriculaNrcRepository = matriculaNrcRepository;
+        this.personaRepository = personaRepository;
     }
 
     public Nrc obtenerPorCodigo(NrcPK pk) {
@@ -31,6 +40,13 @@ public class NrcService {
     }
 
     public void crear(Nrc nrc) {
+
+        Persona personaOpt = this.personaRepository.findById(nrc.getCodPersona())
+                .orElseThrow(() -> new NoEncontradoException("No existe la persona"));
+
+        if (!(personaOpt.getTipoPersona().getCodTipoPersona().equals(TipoPersonaEnum.DOCENTE.getValor()))){
+            throw new PersonaNoAutorizadaException("La persona no es un profesor");
+        }
         this.nrcRespository.save(nrc);
     }
 

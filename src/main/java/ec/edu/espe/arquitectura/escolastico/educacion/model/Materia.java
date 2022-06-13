@@ -1,6 +1,7 @@
 
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
@@ -25,10 +26,13 @@ public class Materia implements Serializable {
     @Column(name = "ponderacion", nullable = false, precision = 5, scale = 2)
     private BigDecimal ponderacion;
     //@JsonIgnore
+    @JsonBackReference(value = "materia_nrcs")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
     private List<Nrc> nrcs;
+    @JsonBackReference(value = "materia_mallaCarrera")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
     private List<MallaCarrera> carreras;
+    @JsonBackReference(value = "materia_prerrequisito")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "prerequisito")
     private List<Prerequisito> prerequisitos;
 

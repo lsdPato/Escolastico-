@@ -33,5 +33,17 @@ public class MateriaResource {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @PutMapping
+    public ResponseEntity<Materia> modificarMateria(@RequestBody Materia materia){
+        try{
+            this.service.modificarMateria(materia);
+            materia = this.service.obtenerPorCodigo(materia.getPk().getCodMateria(),materia.getPk().getCodDepartamento());
+            return ResponseEntity.ok(materia);
+        }catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }
 

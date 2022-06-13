@@ -18,6 +18,11 @@ public class CarreraResource {
         this.service = service;
     }
 
+    @GetMapping(path = "/buscar")
+    public ResponseEntity<List<Carrera>> listarCarreras(){
+        return ResponseEntity.ok(this.service.listarCarreras());
+    }
+
     @GetMapping(path = "/buscar/nombre")
     public ResponseEntity<List<Carrera>> getPorNombre(@RequestParam("nombre") String nombre){
         return ResponseEntity.ok(this.service.obtenerPorNombre(nombre));

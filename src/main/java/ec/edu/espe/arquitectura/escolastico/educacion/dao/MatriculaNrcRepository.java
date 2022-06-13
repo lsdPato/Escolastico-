@@ -20,5 +20,7 @@ public interface MatriculaNrcRepository extends JpaRepository<MatriculaNrc, Matr
 
     List<MatriculaNrc> findByPkCodNrc(Integer codNrc);
 
+    Optional<MatriculaNrc> findByPk(MatriculaNrcPK matriculaNrcPK);
+
     Optional<MatriculaNrc> findTopByPkCodPersonaAndPkCodMateriaOrderByNumeroDesc(Integer codPersona, Integer codMateria);
 }

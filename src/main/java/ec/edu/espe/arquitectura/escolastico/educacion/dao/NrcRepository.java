@@ -14,5 +14,5 @@ public interface NrcRepository extends JpaRepository<Nrc, NrcPK> {
 
     List<Nrc> findByPkCodPeriodoAndPkCodMateria(Integer codPeriodo, Integer codMateria);
 
-    Optional<Nrc> findByPkCodigoNrc(Integer codNrc);
+    Optional<Nrc> findByPkCodNrc(Integer codNrc);
 }

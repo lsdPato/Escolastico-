@@ -35,9 +35,9 @@ public class NrcService {
     }
 
     public void modificar(Nrc nrc) {
-        Optional<Nrc> nrcBd = this.nrcRespository.findByPkCodigoNrc(nrc.getPk().getCodNrc());
-        nrc.setCupoDisponible(nrcBd.get().getCupoDisponible());
-        nrc.setCupoRegistrado(nrcBd.get().getCupoRegistrado());
+        Optional<Nrc> nrcBd = this.nrcRespository.findByPkCodNrc(nrc.getPk().getCodNrc());
+        nrcBd.get().setCupoDisponible(nrc.getCupoDisponible());
+        nrcBd.get().setCupoRegistrado(nrc.getCupoRegistrado());
         this.nrcRespository.save(nrc);
     }
 
@@ -48,7 +48,7 @@ public class NrcService {
 
     public void calcularCupos(Integer codNrc) {
         List<MatriculaNrc> nrcLista = this.matriculaNrcRepository.findByPkCodNrc(codNrc);
-        Optional<Nrc> nrc = this.nrcRespository.findByPkCodigoNrc(codNrc);
+        Optional<Nrc> nrc = this.nrcRespository.findByPkCodNrc(codNrc);
         if(nrc.get().getCupoDisponible() == 0){
             return;
         }
@@ -57,6 +57,7 @@ public class NrcService {
                 nrc.get().setCupoDisponible(nrc.get().getCupoDisponible() - 1);
                 nrc.get().setCupoRegistrado(nrc.get().getCupoRegistrado() + 1);
                 this.nrcRespository.save(nrc.get());
+
             }
 
 

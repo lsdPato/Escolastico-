@@ -15,6 +15,7 @@
  */
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import ec.edu.espe.arquitectura.escolastico.persona.model.Persona;
 
 
@@ -23,7 +24,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "edu_nrc", uniqueConstraints = {@UniqueConstraint(columnNames = {"cod_periodo"})})
+@Table(name = "edu_nrc")
 
 public class Nrc implements Serializable {
 
@@ -38,18 +39,22 @@ public class Nrc implements Serializable {
     private String nombre;
     @Column(name = "cod_persona", nullable = false, insertable = false, updatable = false)
     private Integer codPersona;
-
+    @JsonBackReference(value = "codMateria")
     @JoinColumns({@JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false), @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private Materia materia;
+    @JsonBackReference(value = "codPeriodo")
     @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Periodo periodo;
-    @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false)
+    @JsonBackReference(value = "codPersona")
+    @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Persona Persona;
+    @JsonBackReference(value = "nrcHorario")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "nrc")
     private List<NrcHorario> nrcHorario;
+    @JsonBackReference(value = "matriculaNrc")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "nrc")
     private List<MatriculaNrc> matriculaNrc;
 

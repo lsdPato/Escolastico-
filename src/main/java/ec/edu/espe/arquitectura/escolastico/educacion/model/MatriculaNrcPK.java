@@ -1,9 +1,12 @@
 
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
+import lombok.AllArgsConstructor;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
+@AllArgsConstructor
 @Embeddable
 public class MatriculaNrcPK implements Serializable {
 

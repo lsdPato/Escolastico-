@@ -48,9 +48,9 @@ public class MatriculaNrcService {
         this.nrcService = nrcService;
     }
 
-    public List<MatriculaNrc> obtenerMatriculasActivas(MatriculaNrc matriculaNrc){
+    public List<MatriculaNrc> obtenerMatriculasActivas(MatriculaNrcPK matriculaNrc){
         List<MatriculaNrc> matriculaNrcOpt = this.matriculaNrcRepository.findByPkCodPersonaAndEstado(matriculaNrc
-                .getPk().getCodPersona(), EstadosEnum.ACTIVO.getValor());
+                .getCodPersona(), EstadosEnum.ACTIVO.getValor());
         return matriculaNrcOpt;
     }
 
@@ -150,5 +150,9 @@ public class MatriculaNrcService {
             return 4;
         }
         return consultaMatriculaNrc.get().getNumero()+1;
+    }
+
+    public MatriculaNrc obtenerRegistro(MatriculaNrcPK matriculaNrcPK){
+        return this.matriculaNrcRepository.findByPk(matriculaNrcPK).get();
     }
 }

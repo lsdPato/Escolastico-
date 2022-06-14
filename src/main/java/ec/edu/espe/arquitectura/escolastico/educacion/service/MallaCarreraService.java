@@ -7,6 +7,7 @@ import ec.edu.espe.arquitectura.escolastico.educacion.exception.MateriaCarreraEx
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Carrera;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.MallaCarrera;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Materia;
+import ec.edu.espe.arquitectura.escolastico.seguridad.exception.NoEncontradoException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,7 +37,7 @@ public class MallaCarreraService {
     }
 
     public void asignarMateriaCarrera(Integer codMateria, Integer codCarrera, Integer nivel)
-            throws MateriaCarreraExisteException {
+            throws MateriaCarreraExisteException, NoEncontradoException {
 
         Optional<Materia> materiaBD = this.materiaRepository.findByPkCodMateria(codMateria);
         Optional<Carrera> carreraBD = this.carreraRepository.findById(codCarrera);
@@ -59,6 +60,8 @@ public class MallaCarreraService {
             mallaCarreraTmp.setNivel(nivel);
 
             this.mallaCarreraRepository.save(mallaCarreraTmp);
+        }else{
+            throw new NoEncontradoException("No se ha encontrado la carrera o la materia");
         }
 
     }

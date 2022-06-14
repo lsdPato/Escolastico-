@@ -8,6 +8,7 @@ import ec.edu.espe.arquitectura.escolastico.educacion.model.NrcHorario;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.NrcHorarioPK;
 import ec.edu.espe.arquitectura.escolastico.orgfisica.dao.AulaRepository;
 import ec.edu.espe.arquitectura.escolastico.orgfisica.model.Aula;
+import ec.edu.espe.arquitectura.escolastico.seguridad.exception.NoEncontradoException;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
@@ -34,7 +35,7 @@ public class NrcHorarioService {
     }
 
     public void asignarHorario(Integer nrc, Integer aula, String dia, String horaIni, String horaFin)
-            throws AsignarHorarioException, ParseException {
+            throws AsignarHorarioException, ParseException, NoEncontradoException {
         Optional<Nrc> nrcBD = this.nrcRepository.findByPkCodNrc(nrc);
         Optional<Aula> aulaBD = this.aulaRepository.findById(aula);
         NrcHorario nrcHorarioTmp = new NrcHorario();
@@ -60,6 +61,8 @@ public class NrcHorarioService {
 
             this.nrcHorarioRepository.save(nrcHorarioTmp);
 
+        }else{
+            throw new NoEncontradoException("No se ha encontrado el NRC o aula");
         }
 
     }

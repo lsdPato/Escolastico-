@@ -28,13 +28,9 @@ public class MatriculaService {
     }
     public void crearMatricula(Matricula matricula) {
 
-
-        if(!matricula.getTipo().equals(1)){
-
-        }
-
         this.matriculaRepository.save(matricula);
     }
+
     public List<Matricula> listarMatriculas(Integer codPersona){
         return  this.matriculaRepository.findByPkCodPersona(codPersona);
     }

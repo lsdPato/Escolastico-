@@ -10,6 +10,7 @@ import ec.edu.espe.arquitectura.escolastico.seguridad.EstadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Perfil;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +33,9 @@ public class CalificaionService {
         }
     }
 
+
     public void crear(Calificacion calificion) {
+
         this.calificacionRepository.save(calificion);
     }
     public Optional<Calificacion> listarCalificaciones(Integer nrc, Integer codPersona) {
@@ -54,6 +57,16 @@ public class CalificaionService {
         calificacionDB.setObservacion(calificaion.getObservacion());
 
         this.calificacionRepository.save(calificacionDB);
+    }
+
+    public void calcular(Calificacion calificacion){
+
+        List<Calificacion> calificacionBd = this.calificacionRepository.findByPkCodPersonaAndCodPeriodo(calificacion.getPk().getCodPersona(),calificacion.getCodPeriodo());
+        for (Calificacion calificaciones: calificacionBd) {
+
+            
+        }
+
     }
 
 

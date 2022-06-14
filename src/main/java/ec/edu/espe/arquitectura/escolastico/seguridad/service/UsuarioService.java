@@ -104,7 +104,7 @@ public class UsuarioService {
         this.usuarioRepository.save(usuarioBd);
     }
 
-    public Usuario autenticarUsuario(String mail, String clave) throws UnknownHostException {
+    public String autenticarUsuario(String mail, String clave) throws UnknownHostException {
 
 
         String ip = InetAddress.getLocalHost().getHostAddress();
@@ -128,11 +128,11 @@ public class UsuarioService {
             registroSesion.setCodUsuario(usuarioBd.getCodUsuario());
             registroSesion.setFechaConexion(new Date());
             registroSesion.setIpConexion(ip);
-            registroSesion.setError("Intento numero:" + usuarioBd.getNroIntentosFallidos());
+            registroSesion.setError("e" + usuarioBd.getNroIntentosFallidos());
             registroSesion.setResultado(ResultadosEnum.FALLIDO.getValor());
 
             this.registroSesionRepository.save(registroSesion);
-            return null;
+            return "Fallido";
         }
 
         registroSesion.setCodUsuario(usuarioBd.getCodUsuario());
@@ -144,7 +144,7 @@ public class UsuarioService {
         this.usuarioRepository.save(usuarioBd);
         this.registroSesionRepository.save(registroSesion);
 
-        return usuarioBd;
+        return usuarioBd.getMail();
     }
 
 }

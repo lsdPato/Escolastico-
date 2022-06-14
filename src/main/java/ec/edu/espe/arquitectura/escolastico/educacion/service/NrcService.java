@@ -50,11 +50,15 @@ public class NrcService {
         this.nrcRespository.save(nrc);
     }
 
-    public void modificar(Nrc nrc) {
+    public void modificar(Nrc nrc) throws NoEncontradoException  {
         Optional<Nrc> nrcBd = this.nrcRespository.findByPkCodNrc(nrc.getPk().getCodNrc());
-        nrcBd.get().setCupoDisponible(nrc.getCupoDisponible());
-        nrcBd.get().setCupoRegistrado(nrc.getCupoRegistrado());
-        this.nrcRespository.save(nrc);
+        if(nrcBd.isPresent()) {
+            nrcBd.get().setCupoDisponible(nrc.getCupoDisponible());
+            nrcBd.get().setCupoRegistrado(nrc.getCupoRegistrado());
+            this.nrcRespository.save(nrcBd.get());
+        }else{
+            throw new NoEncontradoException("No existe Nrc");
+        }
     }
 
 

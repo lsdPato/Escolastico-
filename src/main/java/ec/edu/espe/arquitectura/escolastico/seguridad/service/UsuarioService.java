@@ -1,17 +1,16 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.service;
 
+import ec.edu.espe.arquitectura.escolastico.seguridad.EstadoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.EstadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.ResultadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.RegistroSesionRepository;
-import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CambioClaveException;
-import ec.edu.espe.arquitectura.escolastico.seguridad.EstadoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioPerfilRespository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioRepository;
+import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CambioClaveException;
 import ec.edu.espe.arquitectura.escolastico.seguridad.exception.UsuarioInactivoException;
 import ec.edu.espe.arquitectura.escolastico.seguridad.exception.UsuarioNoEncontradoException;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.RegistroSesion;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario;
-import ec.edu.espe.arquitectura.escolastico.seguridad.model.UsuarioPerfil;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;

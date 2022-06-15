@@ -66,7 +66,7 @@ public class FuncionalidadService {
 
 
         Funcionalidad funcionalidad = this.funcionalidadRepository.findByCodFuncionalidadAndEstado(codFuncionalidad,EstadosEnum.ACTIVO.getValor())
-                .orElseThrow(() -> new NoEncontradoException("La funcionalidad con el codigo"));
+                .orElseThrow(() -> new NoEncontradoException("La funcionalidad no esta Activa"));
 
 
         perfilFuncionalidadPK.setCodFuncionalidad(funcionalidad.getCodFuncionalidad());

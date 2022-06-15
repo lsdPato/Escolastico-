@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.UnknownHostException;
 import java.util.List;
 
 @RestController
@@ -31,6 +32,19 @@ public class FuncionalidadResource {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @PostMapping(path = "asignar")
+    public ResponseEntity<String> AsignarFuncionalidad(String codPerfil, String mailAud,Integer codFuncionalidad) throws UnknownHostException {
+        try {
+            this.service.asignarFuncionalidad(codPerfil, mailAud, codFuncionalidad);
+            return ResponseEntity.ok().build();
+        }catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+
+    }
+
 
     @PutMapping
     public ResponseEntity<Funcionalidad> modificar(@RequestBody Funcionalidad funcionalidad) {

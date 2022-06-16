@@ -1,6 +1,9 @@
 
 package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -38,6 +41,7 @@ public class Funcionalidad implements Serializable {
     @Version
     private Integer version;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "funcionalidad", fetch = FetchType.EAGER)
     private List<PerfilFuncionalidad> perfilFuncionalidades;
 
@@ -132,6 +136,7 @@ public class Funcionalidad implements Serializable {
     public List<PerfilFuncionalidad> getPerfilFuncionalidades() {
         return perfilFuncionalidades;
     }
+
 
     public void setPerfilFuncionalidades(List<PerfilFuncionalidad> perfilFuncionalidadList) {
         this.perfilFuncionalidades = perfilFuncionalidadList;

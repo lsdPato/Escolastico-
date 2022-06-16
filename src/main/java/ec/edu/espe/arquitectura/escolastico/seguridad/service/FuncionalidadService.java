@@ -48,7 +48,7 @@ public class FuncionalidadService {
     public void crear(Funcionalidad funcionalidad) {
         funcionalidad.setEstado(EstadosEnum.INACTIVO.getValor());
         this.funcionalidadRepository.save(funcionalidad);
-        this.perfilFuncionalidadRepository.saveAll(funcionalidad.getPerfilFuncionalidades());
+
     }
     public void modificar(Funcionalidad funcionalidad) {
         Funcionalidad funcionalidadBD = this.obtenerPorCodigo(funcionalidad.getCodFuncionalidad());

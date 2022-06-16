@@ -1,6 +1,7 @@
 
 package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -32,7 +33,7 @@ public class Perfil implements Serializable {
     @Version
     @Column(name = "version", nullable = false)
     private Integer version;
-
+    @JsonBackReference
     @OneToMany( fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "perfil")
     private List<PerfilFuncionalidad> perfilFuncionalidades;
 
